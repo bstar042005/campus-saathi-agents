@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 from dotenv import load_dotenv
 from groq import Groq
+from backend.config import GROQ_MODEL
 
 CURRENT_DIR = Path(__file__).resolve().parent
 ENV_PATH = CURRENT_DIR / ".env"
@@ -91,7 +92,7 @@ def query_campus_helper(user_query: str, run_simulation_callback):
     ]
 
     response = client.chat.completions.create(
-        model="qwen/qwen3.8-27b",
+        model=GROQ_MODEL,
         messages=messages,
         tools=TOOLS,
         tool_choice="auto"

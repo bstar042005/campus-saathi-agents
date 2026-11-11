@@ -157,5 +157,5 @@ def test_simulator_travel_matches_the_plan(problem, agent):
     simulator = CampusSimulator("data/campus_map.json", "data/steps.json", seed=42)
     summary = simulator.run_simulation(agent, max_steps=500)
     full_service = sum(cfg["mean_service_time"] for cfg in simulator.steps_config.values())
-    assert summary["travel_time"] == agent.plan_cost
-    assert summary["service_time"] == full_service
+    assert summary["metrics"]["travel_time"] == agent.plan_cost
+    assert summary["metrics"]["service_time"] == full_service

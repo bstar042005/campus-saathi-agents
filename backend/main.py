@@ -1,6 +1,7 @@
 import json
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
+from backend.config import DATA_DIR
 from envi.simulator import CampusSimulator
 from core.problem import CampusProblem
 
@@ -71,7 +72,7 @@ def get_trained_q_agent(problem: CampusProblem, iterations: int = 100) -> QLearn
 def get_campus_map():
     """Returns the campus nodes and edges layout from JSON."""
     try:
-        with open("data/campus_map.json", "r") as f:
+        with open(DATA_DIR / "campus_map.json", "r") as f:
             return json.load(f)
     except FileNotFoundError:
         return {"error": "campus_map.json not found in data directory."}
@@ -90,7 +91,7 @@ def run_simulation_api(
     and returns the step-by-step trace and metrics.
     Supports congestion toggle, Q-learning iterations, custom starting location, and completed steps.
     """
-    simulator = CampusSimulator("data/campus_map.json", "data/steps.json", seed=42)
+    simulator = CampusSimulator(str(DATA_DIR/"campus_map.json"), str(DATA_DIR/"steps.json"), seed=42)
 
     is_congestion = congestion if isinstance(congestion, bool) else True
     q_iterations = iterations if isinstance(iterations, int) else 100

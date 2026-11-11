@@ -95,5 +95,5 @@ def test_policy_completes_every_step_in_simulator(agent):
     simulator = CampusSimulator("data/campus_map.json", "data/steps.json", seed=42)
     summary = simulator.run_simulation(agent, max_steps=500)
     full_service = sum(cfg["mean_service_time"] for cfg in simulator.steps_config.values())
-    assert summary["service_time"] == full_service
-    assert summary["total_cost"] > full_service
+    assert summary["metrics"]["service_time"] == full_service
+    assert summary["metrics"]["total_cost"] > full_service

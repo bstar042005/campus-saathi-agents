@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { API_URL } from "../config";
 
@@ -19,14 +18,11 @@ export default function ChatModal({ isOpen, onClose }) {
   };
 
   useEffect(() => {
-    if (isOpen) {
-      scrollToBottom();
-    }
+    if (isOpen) scrollToBottom();
   }, [messages, isOpen]);
 
   if (!isOpen) return null;
 
-  // Allow only safe external HTTP/HTTPS URLs.
   const getSafeUrl = (value) => {
     try {
       const url = new URL(value);
@@ -64,23 +60,28 @@ export default function ChatModal({ isOpen, onClose }) {
         body: JSON.stringify({ query })
       });
 
+      if (!res.ok) {
+        throw new Error(`Request failed: ${res.status}`);
+      }
+
       const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error('Chat request failed');
-      }
+      const isUnavailable =
+        data.found === false || data.answer_type === 'not_available';
 
       setMessages([
         ...newMessages,
         {
           role: 'assistant',
-          text: data.response || 'No response received.',
+          text: data.response || data.answer || 'No response received.',
+          unavailable: isUnavailable,
           found: data.found ?? true,
           answerType: data.answer_type || 'knowledge',
           sources: Array.isArray(data.sources) ? data.sources : [],
           links: Array.isArray(data.links) ? data.links : [],
           nodeId: data.node_id ?? null,
-          lastVerified: data.last_verified ?? null
+          lastVerified: data.last_verified ?? null,
+          suggestedContact: data.suggested_contact || null
         }
       ]);
 
@@ -98,6 +99,32 @@ export default function ChatModal({ isOpen, onClose }) {
     } finally {
       setLoading(false);
     }
+  };
+
+  const getOfficialLink = (links = []) => {
+    const officialLink = links.find((link) => {
+      const url = typeof link === 'string' ? link : link?.url;
+
+      try {
+        const parsed = new URL(url);
+        return parsed.protocol === 'https:' &&
+          (parsed.hostname === 'iiitdmj.ac.in' ||
+           parsed.hostname.endsWith('.iiitdmj.ac.in'));
+      } catch {
+        return false;
+      }
+    });
+
+    if (!officialLink) {
+      return {
+        url: 'https://www.iiitdmj.ac.in',
+        label: 'IIITDM Jabalpur Official Website'
+      };
+    }
+
+    return typeof officialLink === 'string'
+      ? { url: officialLink, label: 'IIITDM Jabalpur Official Website' }
+      : officialLink;
   };
 
   const sampleQueries = [
@@ -138,11 +165,7 @@ export default function ChatModal({ isOpen, onClose }) {
 
           </div>
 
-          <button
-            onClick={onClose}
-            className="w-8 h-8 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/80 flex items-center justify-center transition-colors cursor-pointer"
-            aria-label="Close"
-          >
+          <button onClick={onClose} className="w-8 h-8 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/80 flex items-center justify-center transition-colors cursor-pointer" aria-label="Close">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -158,123 +181,159 @@ export default function ChatModal({ isOpen, onClose }) {
               key={i}
               className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
+              {msg.unavailable ? (
+                /* "Information not available" card */
+                <div className="unavailable-card">
+                  <div className="unavailable-card-header">
+                    <span className="unavailable-card-icon" aria-hidden="true">!</span>
+                    <span>Information Not Available</span>
+                  </div>
 
-              <div
-                className={`max-w-[85%] rounded-2xl px-4 py-3 text-xs sm:text-sm leading-relaxed ${
-                  msg.role === 'user'
-                    ? 'bg-cyan-600 text-white rounded-br-none shadow-md shadow-cyan-900/30 font-medium'
-                    : 'bg-[#1e293b]/90 text-slate-200 border border-slate-800/80 rounded-bl-none shadow'
-                }`}
-              >
+                  <div className="unavailable-card-message whitespace-pre-wrap">
+                    {msg.text}
+                  </div>
 
-                {/* Answer */}
-                <div className="whitespace-pre-wrap">
-                  {msg.text}
+                  {(() => {
+                    const officialLink = getOfficialLink(msg.links);
+                    const safeUrl = getSafeUrl(officialLink.url);
+
+                    return safeUrl ? (
+                      <a
+                        href={safeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="official-website-button"
+                      >
+                        <span>Visit Official Website</span>
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    ) : null;
+                  })()}
+
+                  {msg.suggestedContact && (
+                    <div className="suggested-contact">
+                      <div className="suggested-contact-title">Suggested Contact</div>
+                      <div className="suggested-contact-details">
+                        {msg.suggestedContact.name && <div>{msg.suggestedContact.name}</div>}
+                        {msg.suggestedContact.office && <div>{msg.suggestedContact.office}</div>}
+                        {msg.suggestedContact.location_text && <div>{msg.suggestedContact.location_text}</div>}
+                        {msg.suggestedContact.phone && <div>Phone: {msg.suggestedContact.phone}</div>}
+                        {msg.suggestedContact.email && <div>Email: {msg.suggestedContact.email}</div>}
+                        {msg.suggestedContact.hours && <div>Hours: {msg.suggestedContact.hours}</div>}
+                      </div>
+                    </div>
+                  )}
                 </div>
+              ) : (
+                <div
+                  className={`max-w-[85%] rounded-2xl px-4 py-3 text-xs sm:text-sm leading-relaxed ${
+                    msg.role === 'user'
+                      ? 'bg-cyan-600 text-white rounded-br-none shadow-md shadow-cyan-900/30 font-medium'
+                      : 'bg-[#1e293b]/90 text-slate-200 border border-slate-800/80 rounded-bl-none shadow'
+                  }`}
+                >
 
-                {/* Structured assistant metadata */}
-                {msg.role === 'assistant' && (
+                  {/* Answer */}
+                  <div className="whitespace-pre-wrap">
+                    {msg.text}
+                  </div>
 
-                  <>
+                  {/* Structured assistant metadata */}
+                  {msg.role === 'assistant' && (
+                    <>
 
-                    {/* Answer unavailable */}
-                    {msg.found === false && (
-                      <p className="mt-3 text-amber-400 text-xs">
-                        This information could not be verified.
-                      </p>
-                    )}
+                      {/* Answer type */}
+                      {msg.answerType && msg.answerType !== 'knowledge' && (
+                        <span className="inline-block mt-2 px-2 py-1 rounded-md bg-slate-800 text-slate-400 text-[10px] capitalize">
+                          {msg.answerType.replaceAll('_', ' ')}
+                        </span>
+                      )}
 
-                    {/* Answer type */}
-                    {msg.answerType && msg.answerType !== 'knowledge' && (
-                      <span className="inline-block mt-2 px-2 py-1 rounded-md bg-slate-800 text-slate-400 text-[10px] capitalize">
-                        {msg.answerType.replaceAll('_', ' ')}
-                      </span>
-                    )}
+                      {/* Sources */}
+                      {msg.sources?.some(source => getSafeUrl(source.url)) && (
+                        <div className="mt-3 pt-3 border-t border-slate-700/70">
 
-                    {/* Sources */}
-                    {msg.sources?.some(source => getSafeUrl(source.url)) && (
-                      <div className="mt-3 pt-3 border-t border-slate-700/70">
+                          <p className="text-[11px] font-semibold text-cyan-400 mb-2">
+                            Sources
+                          </p>
 
-                        <p className="text-[11px] font-semibold text-cyan-400 mb-2">
-                          Sources
-                        </p>
+                          <div className="space-y-2">
 
-                        <div className="space-y-2">
+                            {msg.sources.map((source, index) => {
+                              const safeUrl = getSafeUrl(source.url);
 
-                          {msg.sources.map((source, index) => {
-                            const safeUrl = getSafeUrl(source.url);
+                              if (!safeUrl) return null;
 
-                            if (!safeUrl) return null;
+                              return (
+                                <a
+                                  key={source.id || index}
+                                  href={safeUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center gap-2 text-xs text-cyan-300 hover:text-cyan-200 underline underline-offset-2 break-all"
+                                >
+                                  <span>{source.title}</span>
+                                  <span aria-hidden="true">↗</span>
+                                </a>
+                              );
+                            })}
 
-                            return (
-                              <a
-                                key={source.id || index}
-                                href={safeUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 text-xs text-cyan-300 hover:text-cyan-200 underline underline-offset-2 break-all"
-                              >
-                                <span>{source.title}</span>
-                                <span aria-hidden="true">↗</span>
-                              </a>
-                            );
-                          })}
-
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      )}
 
-                    {/* External links */}
-                    {msg.links?.some(link => getSafeUrl(link.url)) && (
-                      <div className="mt-3 pt-3 border-t border-slate-700/70">
+                      {/* External links */}
+                      {msg.links?.some(link => getSafeUrl(link.url)) && (
+                        <div className="mt-3 pt-3 border-t border-slate-700/70">
 
-                        <p className="text-[11px] font-semibold text-cyan-400 mb-2">
-                          Useful Links
-                        </p>
+                          <p className="text-[11px] font-semibold text-cyan-400 mb-2">
+                            Useful Links
+                          </p>
 
-                        <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-2">
 
-                          {msg.links.map((link, index) => {
-                            const safeUrl = getSafeUrl(link.url);
+                            {msg.links.map((link, index) => {
+                              const safeUrl = getSafeUrl(link.url);
 
-                            if (!safeUrl) return null;
+                              if (!safeUrl) return null;
 
-                            return (
-                              <a
-                                key={`${link.url}-${index}`}
-                                href={safeUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-cyan-950/70 border border-cyan-800 text-cyan-300 hover:bg-cyan-900 text-xs font-medium transition-colors"
-                              >
-                                {link.label}
-                                <span aria-hidden="true">↗</span>
-                              </a>
-                            );
-                          })}
+                              return (
+                                <a
+                                  key={`${link.url}-${index}`}
+                                  href={safeUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-cyan-950/70 border border-cyan-800 text-cyan-300 hover:bg-cyan-900 text-xs font-medium transition-colors"
+                                >
+                                  {link.label}
+                                  <span aria-hidden="true">↗</span>
+                                </a>
+                              );
+                            })}
 
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      )}
 
-                    {/* Node information */}
-                    {msg.nodeId && (
-                      <p className="mt-2 text-[10px] text-slate-500">
-                        Campus location: {msg.nodeId}
-                      </p>
-                    )}
+                      {/* Node information */}
+                      {msg.nodeId && (
+                        <p className="mt-2 text-[10px] text-slate-500">
+                          Campus location: {msg.nodeId}
+                        </p>
+                      )}
 
-                    {/* Verification date */}
-                    {msg.lastVerified && (
-                      <p className="mt-2 text-[10px] text-slate-500">
-                        Last verified: {msg.lastVerified}
-                      </p>
-                    )}
+                      {/* Verification date */}
+                      {msg.lastVerified && (
+                        <p className="mt-2 text-[10px] text-slate-500">
+                          Last verified: {msg.lastVerified}
+                        </p>
+                      )}
 
-                  </>
-                )}
+                    </>
+                  )}
 
-              </div>
+                </div>
+              )}
             </div>
           ))}
 
@@ -311,11 +370,7 @@ export default function ChatModal({ isOpen, onClose }) {
             <div className="flex flex-wrap gap-1.5">
 
               {sampleQueries.map((q, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setInput(q)}
-                  className="text-[11px] bg-slate-800/80 hover:bg-slate-750 text-slate-300 hover:text-white px-2.5 py-1 rounded-lg border border-slate-700/60 transition-colors text-left cursor-pointer"
-                >
+                <button key={idx} onClick={() => setInput(q)} className="text-[11px] bg-slate-800/80 hover:bg-slate-750 text-slate-300 hover:text-white px-2.5 py-1 rounded-lg border border-slate-700/60 transition-colors text-left cursor-pointer">
                   "{q}"
                 </button>
               ))}
@@ -336,7 +391,7 @@ export default function ChatModal({ isOpen, onClose }) {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask Campus Saathi where to go or describe your progress..."
             disabled={loading}
-            className="flex-1 bg-slate-900 border border-slate-700/80 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+            className="flex-1 min-w-0 bg-slate-900 border border-slate-700/80 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
           />
 
           <button

@@ -81,9 +81,9 @@ Instructions:
 3. Call simulate_all_paths (or simulate_path across all algorithms) to fetch the pathfinding metrics.
 4. Internally evaluate all algorithm results to select the optimal path having the lowest total cost and travel time.
 5. In your final response, provide ONLY:
-   - The optimal path (route sequence of locations to visit).
-   - The immediate next step the user must take right now.
-   Strictly do NOT mention algorithm names (such as A*, Greedy, BFS, DFS, Q-Learning) or numerical metrics (travel time, wait time, cost, steps) unless the user explicitly asks for them."""
+    - The optimal path (route sequence of locations to visit).
+    - The immediate next step the user must take right now.
+    Strictly do NOT mention algorithm names (such as A*, Greedy, BFS, DFS, Q-Learning) or numerical metrics (travel time, wait time, cost, steps) unless the user explicitly asks for them."""
 
 def query_campus_helper(user_query: str, run_simulation_callback):
     messages = [
@@ -156,3 +156,22 @@ def query_campus_helper(user_query: str, run_simulation_callback):
         return final_response.choices[0].message.content
 
     return response_message.content
+
+def generate_structured_rag_response(
+    system_prompt: str,
+    user_message: str,
+    history: list[dict] | None = None,
+    temperature: float = 0.1,
+) -> str:
+    messages = [{"role": "system", "content": system_prompt}]
+    if history:
+        messages.extend(history)
+    messages.append({"role": "user", "content": user_message})
+
+    response = client.chat.completions.create(
+        model=GROQ_MODEL,
+        messages=messages,
+        temperature=temperature,
+        response_format={"type": "json_object"},
+    )
+    return response.choices[0].message.content or ""

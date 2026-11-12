@@ -16,11 +16,11 @@
         "type": "official_link",
         "aliases": ["timetable", "time table", "class timetable"],
         "node_id": null,
-        "source": "https://www.iiitdmj.ac.in/academics/download/Academic%20Calendar%20for%20Session%202026-2027%20.pdf",
+        "source": "https://docs.google.com/spreadsheets/d/119TE5gkzp-2Hv9zY17ijM-quo9LJX1By8rPMp5HkxKY/edit?usp=sharing_eip&ts=6a77225b",
         "last_verified": "2026-11-11",
         "key": "timetable",
         "label": "Class Timetable",
-        "url": "https://www.iiitdmj.ac.in/academics/download/Academic%20Calendar%20for%20Session%202026-2027%20.pdf",
+        "url": "https://docs.google.com/spreadsheets/d/119TE5gkzp-2Hv9zY17ijM-quo9LJX1By8rPMp5HkxKY/edit?usp=sharing_eip&ts=6a77225b",
         "description": "Official timetable and academic schedule link."
     },
     {

@@ -1,5 +1,6 @@
 import re
 import json
+import logging
 from urllib.parse import urlparse
 from typing import List, Optional, Literal
 
@@ -25,6 +26,7 @@ from algorithms.simulated_annealing import SimulatedAnnealingAgent
 
 
 app = FastAPI(title="Campus Saathi API", version="1.0")
+logger = logging.getLogger(__name__)
 
 app.add_middleware(
     CORSMiddleware,
@@ -513,6 +515,7 @@ def chat_campus_helper(request: ChatRequest):
             )
 
         except Exception:
+            logger.exception("Navigation chat request failed")
             response, main_url = not_available_text(
                 get_link_by_key("main_website")
             )
@@ -557,6 +560,7 @@ def chat_campus_helper(request: ChatRequest):
         )
 
     except Exception:
+        logger.exception("Knowledge chat request failed")
         response, main_url = not_available_text(
             get_link_by_key("main_website")
         )

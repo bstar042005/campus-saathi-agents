@@ -1,151 +1,502 @@
-multi-agent campus reporting simulator. A first-time student must complete a checklist of reporting steps spread across a campus (academic block + hostel block), and different AI agents — classical search, local search, an MDP planner, and a reinforcement-learning agent — compete to finish in the least total time under queueing congestion.
+# Campus Saathi Agents
 
-The project ships with:
+A multi-agent campus reporting simulator that helps a first-time student complete reporting formalities across an academic and hostel campus. It models campus navigation, service times, queues, and crowd congestion, then compares multiple AI and search-based agents to determine how they complete the reporting journey.
 
-a simulation engine (campus graph, FIFO room counters, a scripted crowd of background students),
-9 agents (BFS, DFS, IDS, UCS, A*, Greedy Nearest, Simulated Annealing, Value Iteration, Q-Learning),
-a FastAPI backend that runs simulations and exposes a chatbot,
-a React dashboard that animates each agent's route on the campus map and compares metrics,
-an LLM chat assistant (Groq) that runs the simulations as tools and tells a student where to go next.
-The problem
+The project includes a simulation engine, nine planning/search agents, a FastAPI backend, a React dashboard, and an LLM-powered campus assistant.
 
-A student arrives at the gate and must complete every reporting step on campus. Each step happens in a specific room and costs time:
+---
 
-Total time = travel time + queue waiting time + service time
+## Table of Contents
 
-The campus is a weighted graph of 11 nodes in two clusters, joined by costly crossing edges:
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [How the Simulation Works](#how-the-simulation-works)
+- [Algorithms and Agents](#algorithms-and-agents)
+- [Technology Stack](#technology-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [1. Clone the Repository](#1-clone-the-repository)
+  - [2. Set Up the Backend](#2-set-up-the-backend)
+  - [3. Set Up the Frontend](#3-set-up-the-frontend)
+- [Environment Variables](#environment-variables)
+- [Using the Application](#using-the-application)
+- [Backend API](#backend-api)
+- [Chat Assistant](#chat-assistant)
+- [Running Tests](#running-tests)
+- [Experiments](#experiments)
+- [Configuration and Customization](#configuration-and-customization)
+- [Documentation](#documentation)
 
-Cluster	Rooms
-Neutral	gate
-Academic	lhtc_gate, L-103, L-104, L-105, L-106, L-206
-Hostel	panini_gate, office, room, shop
+---
 
-Each room has a step (e.g. Fee Clearance & Accounts at L-104, Warden Clearance at office), a mean service time and a number of counters. These live in data/campus_map.json and data/steps.json, so the campus can be changed without touching code.
+## Overview
 
-State: (current_room, frozenset(completed_steps)) Actions: ("move", neighbour) or ("complete", current_room) Goal: every step in steps.json is completed Cost: sum of edge travel times + service times + queue waits
+A newly admitted student may need to visit several rooms and offices to complete campus reporting formalities. The order of visits matters: some rooms are far apart, some formalities take longer, and queues can increase waiting time.
 
-Formal write-ups are in docs/: PROBLEM.md, PEAS.md, ENVIRONMENT.md.
+Campus Saathi models this problem as a search and planning task. Different agents are placed in the same simulated campus environment and evaluated on the time and cost required to complete all required steps.
 
-Agents
-Agent	Family	File	Notes
-BFS	Uninformed search	algorithms/bfs.py	
-DFS	Uninformed search	algorithms/dfs.py	
-IDS	Uninformed search	algorithms/ids.py	Iterative deepening
-UCS	Uninformed, cost-aware	algorithms/ucs.py	A* with h = 0
-A*	Informed search	algorithms/astar.py	Admissible + consistent heuristics in heuristics.py (farthest-remaining-room, cluster-aware). See algorithms/astar.md for proofs
-Greedy Nearest	Heuristic	algorithms/greedy_nearest.py	Always goes to the nearest unfinished room (Dijkstra)
-Simulated Annealing	Local search	algorithms/simulated_annealing.py	Optimises visiting order; exact Held-Karp optimum used as a reference. See docs/algorithms/simulated_annealing.md
-Value Iteration	MDP planning	algorithms/value_iteration.py	State includes a low/medium/high congestion level (67,584 states). See docs/algorithms/value_iteration.md
-Q-Learning	Reinforcement learning	agents/q_learning_agent.py	Epsilon-greedy, tabular; trained online against the simulator
+The objective is to minimize:
 
-All agents extend BaseAgent (agents/base_agent.py) and implement select_action(state, metrics).
+**Total Cost = Travel Time + Queue Waiting Time + Service Time**
 
-How the simulator models congestion
+The dashboard makes the agents' routes and performance metrics easier to compare.
 
-envi/simulator.py runs one episode for an agent and returns a step-by-step trace plus metrics.
+## Key Features
 
-Every room with a step has a RoomCounter (core/counters.py): a FIFO queue served by num_counters parallel counters, with gamma-distributed service times.
-20 background students wander the campus on shortest paths and join queues, so congestion is stochastic but reproducible (seeded; the API uses seed=42).
-When the agent completes a step with congestion on, it waits roughly in proportion to the queue length / crowd in that room and the room's mean service time.
-Congestion can be switched off to compare agents on pure travel + service cost.
-Project structure
-.
-├── agents/            BaseAgent + Q-learning agent
-├── algorithms/        BFS, DFS, IDS, UCS, A*, Greedy, Simulated Annealing, Value Iteration, heuristics
-├── core/              CampusProblem (formulation), RoomCounter (queues), MetricsTracker, seeding
-├── envi/              CampusGraph + CampusSimulator
-├── data/              campus_map.json, steps.json
-├── backend/           FastAPI app (main.py) + Groq chat service (groq_service.py)
-├── frontend/          React + Vite dashboard
-├── experiments/       Training / evaluation scripts
-├── tests/             pytest suite
-└── docs/              Problem formulation, PEAS, environment, algorithm write-ups
-Getting started
-Prerequisites
-Python 3.10+ (the code uses list[str] type hints)
-Node.js 18+ and npm (for the dashboard)
-A Groq API key (only needed for the chat assistant)
-1. Backend
+- **Multi-agent simulation:** Compare nine agents using different search, optimization, planning, and reinforcement-learning approaches.
+- **Campus graph:** Represent campus locations as nodes connected by weighted travel paths.
+- **Queue and crowd simulation:** Model FIFO queues, parallel service counters, and background students.
+- **Performance metrics:** Track travel time, waiting time, service time, total cost, and simulation steps.
+- **Interactive dashboard:** View the campus map, follow agent routes, and compare simulation results.
+- **AI campus assistant:** Ask where to go next using a Groq-powered language model connected to simulation tools.
+- **Configurable campus data:** Update locations, routes, reporting steps, and service information through JSON files.
+- **Reproducible experiments:** Use seeded simulations and evaluation scripts to compare approaches.
 
-From the repository root (the backend reads data/*.json using relative paths):
+## How the Simulation Works
 
-bash
+### 1. Campus environment
+
+The campus is represented as a weighted graph containing locations in two main clusters:
+
+| Area | Locations |
+|---|---|
+| Neutral | `gate` |
+| Academic | `lhtc_gate`, `L-103`, `L-104`, `L-105`, `L-106`, `L-206` |
+| Hostel | `panini_gate`, `office`, `room`, `shop` |
+
+Edges represent paths between locations, and their weights represent travel costs or time. Moving between the academic and hostel clusters can be more expensive than moving within a cluster.
+
+The campus layout is defined in `data/campus_map.json`.
+
+### 2. Reporting steps
+
+Each reporting step is associated with a campus location and has service-time and counter information. These details are stored in `data/steps.json`.
+
+### 3. Agent state and actions
+
+The planning problem uses a state of the form:
+
+`(current_room, frozenset(completed_steps))`
+
+An agent can take actions such as:
+
+- `("move", neighbour)` — move to a connected location.
+- `("complete", current_room)` — complete the reporting step at the current location.
+
+The goal is to complete every required reporting step.
+
+### 4. Queue and congestion model
+
+The simulator models queues using FIFO room counters with multiple parallel service counters. Background students move through the campus and join queues, affecting the waiting time experienced by the evaluated agent.
+
+Congestion can be enabled or disabled:
+
+- **Congestion enabled:** Includes queue waiting and background student activity.
+- **Congestion disabled:** Helps compare route and service costs without queue effects.
+
+A seed is used to make simulations reproducible.
+
+## Algorithms and Agents
+
+The project implements nine agents:
+
+| Agent | Approach | Description |
+|---|---|---|
+| BFS | Uninformed search | Explores the state space breadth-first. |
+| DFS | Uninformed search | Explores one branch deeply before backtracking. |
+| IDS | Uninformed search | Repeats depth-limited search with increasing depth limits. |
+| UCS | Cost-based search | Expands the lowest accumulated-cost state first. |
+| A* | Informed search | Combines path cost with an admissible heuristic. |
+| Greedy Nearest | Heuristic | Visits the nearest unfinished reporting location. |
+| Simulated Annealing | Local search | Optimizes the order in which reporting locations are visited. |
+| Value Iteration | MDP planning | Computes a policy using rewards and state-transition probabilities. |
+| Q-Learning | Reinforcement learning | Learns a policy through interaction with the simulator. |
+
+Implementation files are located in `algorithms/` and `agents/`. Each agent follows the common interface defined in `agents/base_agent.py`.
+
+## Technology Stack
+
+| Layer | Technologies |
+|---|---|
+| Frontend | React, Vite, JavaScript, CSS |
+| Backend | Python, FastAPI, Uvicorn |
+| AI assistant | Groq API, tool-based simulation calls |
+| Search and planning | BFS, DFS, IDS, UCS, A*, Greedy Search, Simulated Annealing, Value Iteration |
+| Reinforcement learning | Tabular Q-Learning |
+| Simulation and data | Python, JSON, NumPy |
+| Testing | pytest |
+| Retrieval / knowledge search | rank-bm25 |
+
+## Project Structure
+
+```text
+campus-saathi-agents/
+│
+├── agents/
+│   ├── base_agent.py
+│   └── q_learning_agent.py
+│
+├── algorithms/
+│   ├── astar.py
+│   ├── bfs.py
+│   ├── dfs.py
+│   ├── greedy_nearest.py
+│   ├── heuristics.py
+│   ├── ids.py
+│   ├── simulated_annealing.py
+│   ├── ucs.py
+│   └── value_iteration.py
+│
+├── backend/
+│   ├── main.py
+│   ├── config.py
+│   ├── groq_service.py
+│   ├── intent_router.py
+│   ├── answering.py
+│   ├── knowledge.py
+│   └── .env.example
+│
+├── core/
+│   ├── problem.py
+│   ├── counters.py
+│   ├── metrics.py
+│   └── seeding.py
+│
+├── data/
+│   ├── campus_map.json
+│   ├── steps.json
+│   └── knowledge/
+│
+├── docs/
+│   ├── PROBLEM.md
+│   ├── PEAS.md
+│   ├── ENVIRONMENT.md
+│   └── algorithms/
+│
+├── envi/
+│   ├── campus_graph.py
+│   └── simulator.py
+│
+├── experiments/
+│   ├── eval_simulated_annealing.py
+│   ├── eval_value_iteration.py
+│   └── train_q.py
+│
+├── frontend/
+│   ├── src/
+│   ├── package.json
+│   └── .env.example
+│
+├── scripts/
+├── tests/
+├── requirements.txt
+└── README.md
+```
+
+## Getting Started
+
+### Prerequisites
+
+Install the following before running the project:
+
+- Python 3.10 or later
+- Node.js 18 or later and npm
+- Git
+- A Groq API key (only required for the AI chat assistant)
+
+### 1. Clone the Repository
+
+```bash
+git clone <your-repository-url>
+cd campus-saathi-agents
+```
+
+### 2. Set Up the Backend
+
+Create and activate a virtual environment from the project root.
+
+**Windows (PowerShell):**
+
+```powershell
 python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
+.venv\Scripts\Activate.ps1
+```
+
+**macOS / Linux:**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Install the Python dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
+Create the backend environment file:
+
+**Windows (PowerShell):**
+
+```powershell
+Copy-Item backend/.env.example backend/.env
+```
+
+**macOS / Linux:**
+
+```bash
 cp backend/.env.example backend/.env
-# edit backend/.env and set GROQ_API_KEY=<your key>
+```
 
+Open `backend/.env` and add your Groq API key if you want to use the chat assistant.
+
+Start the API server from the **repository root**:
+
+```bash
 uvicorn backend.main:app --reload --port 8000
+```
 
-The API is now at http://127.0.0.1:8000 (interactive docs at /docs).
+The backend will be available at:
 
-2. Frontend
-bash
+- API base URL: `http://127.0.0.1:8000`
+- Interactive API documentation: `http://127.0.0.1:8000/docs`
+
+### 3. Set Up the Frontend
+
+Open a second terminal:
+
+```bash
 cd frontend
 npm install
+```
+
+Create the frontend environment file:
+
+**Windows (PowerShell):**
+
+```powershell
+Copy-Item .env.example .env
+```
+
+**macOS / Linux:**
+
+```bash
+cp .env.example .env
+```
+
+The example configuration points to the local backend:
+
+```env
+VITE_API_URL=http://127.0.0.1:8000
+```
+
+Start the frontend development server:
+
+```bash
 npm run dev
+```
 
-Open the URL Vite prints (usually http://localhost:5173). The frontend expects the backend at http://127.0.0.1:8000.
+Open the local URL printed by Vite in your terminal (commonly `http://localhost:5173`).
 
-API
-Method	Endpoint	Description
-GET	/api/map	Campus nodes and edges
-GET	/api/simulate/{agent_type}	Run one episode and return the trace and metrics
-POST	/api/chat	Ask the LLM assistant; body: {"query": "..."}
+> Keep the backend and frontend terminals running while using the application.
 
-/api/simulate/{agent_type}
+## Environment Variables
 
-agent_type: a_star, ucs, bfs, dfs, ids, greedy_nearest, simulated_annealing, value_iteration, q_learning (also q_learning_<iterations>).
+### Backend — `backend/.env`
 
-Query param	Default	Meaning
-congestion	true	Enable queues and background students
-iterations	100	Q-learning training episodes
-start_location	gate	Room to start from
-completed_steps	none	Repeatable; steps already done
-bash
+| Variable | Purpose |
+|---|---|
+| `GROQ_API_KEY` | API key used by the Groq-powered chat assistant. |
+| `GROQ_MODEL` | Groq model identifier used for chat completions. |
+| `CORS_ORIGINS` | Allowed frontend origins. |
+
+Example:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+GROQ_MODEL=qwen/qwen3.8-27b
+CORS_ORIGINS=http://localhost:5173
+```
+
+### Frontend — `frontend/.env`
+
+| Variable | Purpose |
+|---|---|
+| `VITE_API_URL` | Base URL of the FastAPI backend. |
+
+Example:
+
+```env
+VITE_API_URL=http://127.0.0.1:8000
+```
+
+Never commit real API keys or secret environment files to version control.
+
+## Using the Application
+
+1. Start the backend and frontend.
+2. Open the frontend in your browser.
+3. Select an agent or compare the available simulation results using the dashboard.
+4. Inspect the route on the campus map.
+5. Compare travel, waiting, service, and total-cost metrics.
+6. Use the chat assistant to ask for guidance about the next reporting step.
+
+The exact controls and layout are provided by the frontend interface.
+
+## Backend API
+
+The FastAPI backend exposes endpoints for campus data, simulations, and chat.
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/map` | Returns campus nodes and edges. |
+| `GET` | `/api/simulate/{agent_type}` | Runs a simulation for the selected agent. |
+| `POST` | `/api/chat` | Sends a question to the AI campus assistant. |
+
+### Run a simulation
+
+Example: run A* with congestion enabled.
+
+```bash
 curl "http://127.0.0.1:8000/api/simulate/a_star?congestion=true"
+```
+
+Supported agent identifiers:
+
+```text
+a_star
+ucs
+bfs
+dfs
+ids
+greedy_nearest
+simulated_annealing
+value_iteration
+q_learning
+```
+
+The Q-Learning endpoint also accepts an iteration count in the agent identifier (for example, `q_learning_500`) or through the supported query parameter.
+
+The simulation endpoint supports parameters such as:
+
+| Parameter | Default | Description |
+|---|---|---|
+| `congestion` | `true` | Enables or disables queue and crowd effects. |
+| `iterations` | `100` | Q-Learning training episodes. |
+| `start_location` | `gate` | Starting campus location. |
+| `completed_steps` | None | Repeatable parameter for steps already completed. |
+
+Example with a custom start location and completed steps:
+
+```bash
 curl "http://127.0.0.1:8000/api/simulate/q_learning?iterations=500&start_location=L-103&completed_steps=gate&completed_steps=lhtc_gate"
+```
 
-Response shape:
+A simulation response contains the selected agent, number of steps, performance metrics, and a trace of the agent's actions. Depending on the response, background-student positions may also be included.
 
-jsonc
+Example response shape:
+
+```json
 {
   "agent": "AStarAgent",
   "total_steps": 42,
-  "metrics": { "travel_time": 0, "wait_time": 0, "service_time": 0, "total_cost": 0 },
+  "metrics": {
+    "travel_time": 0,
+    "wait_time": 0,
+    "service_time": 0,
+    "total_cost": 0
+  },
   "trace": [
-    { "step": 1, "current_room": "gate", "completed_steps": ["gate"], "action_taken": ["complete", "gate"] }
+    {
+      "step": 1,
+      "current_room": "gate",
+      "completed_steps": ["gate"],
+      "action_taken": ["complete", "gate"]
+    }
   ],
-  "background_steps": [ [ { "id": "student_1", "current_room": "L-104" } ] ]
+  "background_steps": []
 }
+```
 
-Q-learning agents are trained on request and cached per iteration count, so the first call with a new iterations value is slower.
+The numeric values above are illustrative; actual values depend on the selected agent, configuration, and simulation seed.
 
-Chat assistant
+## Chat Assistant
 
-POST /api/chat sends the student's message to a Groq-hosted LLM with two tools, simulate_all_paths and simulate_path, which call the simulator. The model extracts the student's current location and completed steps from the message, runs the algorithms, picks the cheapest route, and replies with just the route and the immediate next step.
+The chat endpoint connects a Groq-hosted language model to the campus knowledge base and simulation tools.
 
-Example prompts: "I'm at L-104 and have finished the gate and allotment verification — what next?"
+The assistant can interpret a student's current location and already-completed reporting steps, request route calculations from the simulator, and respond with route guidance and the next recommended action.
 
-Notes:
+Example question:
 
-The model name is set in backend/groq_service.py; change it there if your Groq account uses a different one.
-The chat tools currently cover a_star, bfs, dfs, greedy_nearest and q_learning only.
-Tests and experiments
-bash
-pip install pytest
+```text
+I'm at L-104 and have finished the gate and allotment verification.
+What should I do next?
+```
+
+To enable chat:
+
+1. Obtain an API key from Groq.
+2. Add it to `GROQ_API_KEY` in `backend/.env`.
+3. Set `GROQ_MODEL` to a model available to your Groq account.
+4. Restart the backend.
+
+The simulation endpoints can be used independently of the Groq chat integration.
+
+## Running Tests
+
+Run tests from the repository root with the virtual environment activated:
+
+```bash
 python -m pytest
+```
 
-Experiments (run from the repo root):
+To run a specific test file:
 
-bash
-python -m experiments.eval_simulated_annealing   # cooling schedules vs. exact Held-Karp optimum
-python -m experiments.eval_value_iteration       # value iteration vs. a nearest-room baseline
-python -m experiments.train_q                    # Q-learning learning curve at episode milestones
-Known issues
-CampusSimulator.run_simulation returns metrics nested under "metrics", but a few older callers still read them from the top level. As a result tests/simulated_annealing_test.py::test_simulator_travel_matches_the_plan and tests/value_iteration_test.py::test_policy_completes_every_step_in_simulator fail, and experiments/train_q.py and experiments/eval_value_iteration.py crash with a KeyError / TypeError. The fix is to read result["metrics"][...].
-The frontend hardcodes http://127.0.0.1:8000; change it in App.jsx, CampusMap.jsx and ChatModal.jsx if you deploy the backend elsewhere.
-CORS is open to all origins (allow_origins=["*"]), which is fine for local development but should be restricted in production.
-docs/PROBLEM.md mentions 10 reporting steps, but data/steps.json defines 11 (including the gate step), and the goal test uses all of them.
+```bash
+python -m pytest tests/test_astar.py
+```
+
+## Experiments
+
+The `experiments/` directory contains scripts for evaluating and training selected algorithms.
+
+Run them from the repository root:
+
+```bash
+python -m experiments.eval_simulated_annealing
+python -m experiments.eval_value_iteration
+python -m experiments.train_q
+```
+
+These scripts can be used to study optimization quality, planning performance, and Q-Learning behavior under the configured simulation environment.
+
+## Configuration and Customization
+
+You can adapt the simulation to a different campus without changing the core algorithms:
+
+- **Campus layout:** Edit `data/campus_map.json` to change locations and weighted connections.
+- **Reporting requirements:** Edit `data/steps.json` to change the steps, their locations, and service configuration.
+- **Campus assistant knowledge:** Update the JSON files in `data/knowledge/` using the structure described in `data/knowledge/SCHEMA.md`.
+- **Frontend API URL:** Change `VITE_API_URL` in `frontend/.env` when the backend runs at a different address.
+- **Backend CORS:** Update `CORS_ORIGINS` in `backend/.env` to match the frontend origin.
+
+After changing configuration data, restart the backend so it reloads the updated files.
+
+## Documentation
+
+Additional technical documentation is available in `docs/`:
+
+- `docs/PROBLEM.md` — problem formulation.
+- `docs/PEAS.md` — PEAS description of the agent environment.
+- `docs/ENVIRONMENT.md` — environment and simulation details.
+- `docs/CHAT_API.md` — chat API information.
+- `docs/CONVENTIONS.md` — project conventions.
+- `docs/algorithms/` and `algorithms/` — algorithm-specific explanations and implementation notes.
+
+---
+
+## License
+
+See [LICENSE](LICENSE) for license information.

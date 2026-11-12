@@ -36,11 +36,6 @@ app.add_middleware(
 
 _Q_TABLE_CACHE = {}
 
-
-# ============================================================
-# SIMULATION
-# ============================================================
-
 def get_trained_q_agent(
     problem: CampusProblem,
     iterations: int = 100
@@ -204,10 +199,8 @@ def run_simulation_api(
         completed_steps=completed_fs,
     )
 
-
-# ============================================================
-# STRUCTURED CHAT RESPONSE MODELS
-# ============================================================
+from backend.answering import answer_knowledge_query
+from backend.intent_router import classify, get_link_by_key, not_available_text
 
 class HistoryMessage(BaseModel):
     role: Literal["user", "assistant"]
@@ -262,9 +255,6 @@ class ChatResponse(BaseModel):
     last_verified: Optional[str] = None
 
 
-# ============================================================
-# KNOWLEDGE LINK LOADING AND MATCHING
-# ============================================================
 
 LINK_KEYWORDS = {
     "academic_calendar": [
@@ -435,9 +425,7 @@ def find_relevant_sources(query: str) -> List[SourceReference]:
 
     return relevant_sources
 
-# ============================================================
-# CHAT API
-# ============================================================
+
 
 @app.post("/api/chat", response_model=ChatResponse)
 def chat_campus_helper(request: ChatRequest):
@@ -456,34 +444,132 @@ def chat_campus_helper(request: ChatRequest):
             completed_steps=completed_steps,
         )
 
-    try:
-        reply = query_campus_helper(
-            request.query,
-            simulation_callback,
-        )
+    intent = classify(request.query)
 
-        relevant_links = find_relevant_links(request.query)
-        relevant_sources = find_relevant_sources(request.query)
-
-        answer_type = "link" if relevant_links else "knowledge"
-
+    if intent == "greeting":
         return ChatResponse(
-            response=reply,
+            response="Hello! How can I help you with the campus?",
             found=True,
-            answer_type=answer_type,
-            sources=relevant_sources,
-            links=relevant_links,
-            node_id=None,
-            last_verified=None,
+            answer_type="knowledge",
         )
 
-    except Exception as error:
+    if intent == "link":
+        query_lower = request.query.lower()
+
+        link_key = (
+            "timetable"
+            if "timetable" in query_lower or "time table" in query_lower
+            else "academic_calendar"
+        )
+
+        link = get_link_by_key(link_key)
+
+        if link and link.get("url"):
+            url = link["url"]
+
+            return ChatResponse(
+                response=f"You can find the requested information here: {url}",
+                found=True,
+                answer_type="link",
+                links=[
+                    ExternalLink(
+                        label=link.get("label", link_key),
+                        url=url,
+                    )
+                ],
+                sources=find_relevant_sources(request.query),
+                node_id=link.get("node_id"),
+                last_verified=link.get("last_verified"),
+            )
+
+        response, main_url = not_available_text(
+            get_link_by_key("main_website")
+        )
+
         return ChatResponse(
-            response=f"Error communicating with AI assistant: {str(error)}",
+            response=response,
             found=False,
             answer_type="not_available",
-            sources=[],
-            links=[],
-            node_id=None,
-            last_verified=None,
+            links=[
+                ExternalLink(
+                    label="IIITDM Jabalpur Website",
+                    url=main_url,
+                )
+            ],
         )
+
+    if intent == "navigation":
+        try:
+            reply = query_campus_helper(
+                request.query,
+                simulation_callback,
+            )
+
+            return ChatResponse(
+                response=reply,
+                found=True,
+                answer_type="navigation",
+                sources=find_relevant_sources(request.query),
+            )
+
+        except Exception:
+            response, main_url = not_available_text(
+                get_link_by_key("main_website")
+            )
+
+            return ChatResponse(
+                response=response,
+                found=False,
+                answer_type="not_available",
+                links=[
+                    ExternalLink(
+                        label="IIITDM Jabalpur Website",
+                        url=main_url,
+                    )
+                ],
+            )
+
+    try:
+        result = answer_knowledge_query(
+            request.query,
+            history=[
+                message.model_dump()
+                for message in (request.history or [])
+            ],
+        )
+
+        links = [
+            ExternalLink(
+                label="Official source",
+                url=url,
+            )
+            for url in result.links
+        ]
+
+        return ChatResponse(
+            response=result.answer,
+            found=result.found,
+            answer_type=(
+                "knowledge" if result.found else "not_available"
+            ),
+            sources=find_relevant_sources(request.query),
+            links=links,
+        )
+
+    except Exception:
+        response, main_url = not_available_text(
+            get_link_by_key("main_website")
+        )
+
+        return ChatResponse(
+            response=response,
+            found=False,
+            answer_type="not_available",
+            links=[
+                ExternalLink(
+                    label="IIITDM Jabalpur Website",
+                    url=main_url,
+                )
+            ],
+        )
+

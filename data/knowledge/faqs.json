@@ -12,7 +12,7 @@
     "source": "data/steps.json",
     "last_verified": "2026-11-12",
     "question": "Where should I go for Entry Reporting & ID Verification?",
-    "answer": "The campus procedure map assigns Entry Reporting & ID Verification to location node gate.",
+    "answer": "Entry Reporting & ID Verification is mapped to campus-map node 'gate'. Use the Campus Saathi campus map to locate this point. The project map currently provides a node reference, not a verified physical room or building name.",
     "required_documents": [],
     "category": "Neutral",
     "related_step": "gate"
@@ -30,7 +30,7 @@
     "source": "data/steps.json",
     "last_verified": "2026-11-12",
     "question": "Where should I go for Allotment Verification?",
-    "answer": "The campus procedure map assigns Allotment Verification to location node lhtc_gate.",
+    "answer": "Allotment Verification is mapped to campus-map node 'lhtc_gate'. Use the Campus Saathi campus map to locate this point. The project map currently provides a node reference, not a verified physical room or building name.",
     "required_documents": [],
     "category": "Academic",
     "related_step": "lhtc_gate"
@@ -48,7 +48,7 @@
     "source": "data/steps.json",
     "last_verified": "2026-11-12",
     "question": "Where should I go for Document Verification?",
-    "answer": "The campus procedure map assigns Document Verification to location node L-103.",
+    "answer": "Document Verification is mapped to campus-map node 'L-103'. Use the Campus Saathi campus map to locate this point. The project map currently provides a node reference, not a verified physical room or building name.",
     "required_documents": [],
     "category": "Academic",
     "related_step": "L-103"
@@ -66,7 +66,7 @@
     "source": "data/steps.json",
     "last_verified": "2026-11-12",
     "question": "Where should I go for Fee Clearance & Accounts?",
-    "answer": "The campus procedure map assigns Fee Clearance & Accounts to location node L-104.",
+    "answer": "Fee Clearance & Accounts is mapped to campus-map node 'L-104'. Use the Campus Saathi campus map to locate this point. The project map currently provides a node reference, not a verified physical room or building name.",
     "required_documents": [],
     "category": "Academic",
     "related_step": "L-104"
@@ -84,7 +84,7 @@
     "source": "data/steps.json",
     "last_verified": "2026-11-12",
     "question": "Where should I go for Department Registration?",
-    "answer": "The campus procedure map assigns Department Registration to location node L-105.",
+    "answer": "Department Registration is mapped to campus-map node 'L-105'. Use the Campus Saathi campus map to locate this point. The project map currently provides a node reference, not a verified physical room or building name.",
     "required_documents": [],
     "category": "Academic",
     "related_step": "L-105"
@@ -102,7 +102,7 @@
     "source": "data/steps.json",
     "last_verified": "2026-11-12",
     "question": "Where should I go for ID Card Biometrics?",
-    "answer": "The campus procedure map assigns ID Card Biometrics to location node L-106.",
+    "answer": "ID Card Biometrics is mapped to campus-map node 'L-106'. Use the Campus Saathi campus map to locate this point. The project map currently provides a node reference, not a verified physical room or building name.",
     "required_documents": [],
     "category": "Academic",
     "related_step": "L-106"
@@ -120,7 +120,7 @@
     "source": "data/steps.json",
     "last_verified": "2026-11-12",
     "question": "Where should I go for Library Membership?",
-    "answer": "The campus procedure map assigns Library Membership to location node L-206.",
+    "answer": "Library Membership is mapped to campus-map node 'L-206'. Use the Campus Saathi campus map to locate this point. The project map currently provides a node reference, not a verified physical room or building name.",
     "required_documents": [],
     "category": "Academic",
     "related_step": "L-206"
@@ -138,7 +138,7 @@
     "source": "data/steps.json",
     "last_verified": "2026-11-12",
     "question": "Where should I go for Hostel Allotment Letter?",
-    "answer": "The campus procedure map assigns Hostel Allotment Letter to location node panini_gate.",
+    "answer": "Hostel Allotment Letter is mapped to campus-map node 'panini_gate'. Use the Campus Saathi campus map to locate this point. The project map currently provides a node reference, not a verified physical room or building name.",
     "required_documents": [],
     "category": "Hostel",
     "related_step": "panini_gate"
@@ -156,7 +156,7 @@
     "source": "data/steps.json",
     "last_verified": "2026-11-12",
     "question": "Where should I go for Room Inspection?",
-    "answer": "The campus procedure map assigns Room Inspection to location node room.",
+    "answer": "Room Inspection is mapped to campus-map node 'room'. Use the Campus Saathi campus map to locate this point. The project map currently provides a node reference, not a verified physical room or building name.",
     "required_documents": [],
     "category": "Hostel",
     "related_step": "room"
@@ -174,7 +174,7 @@
     "source": "data/steps.json",
     "last_verified": "2026-11-12",
     "question": "Where should I go for Warden Clearance?",
-    "answer": "The campus procedure map assigns Warden Clearance to location node office.",
+    "answer": "Warden Clearance is mapped to campus-map node 'office'. Use the Campus Saathi campus map to locate this point. The project map currently provides a node reference, not a verified physical room or building name.",
     "required_documents": [],
     "category": "Hostel",
     "related_step": "office"
@@ -192,9 +192,559 @@
     "source": "data/steps.json",
     "last_verified": "2026-11-12",
     "question": "Where should I go for Necessities Shopping?",
-    "answer": "The campus procedure map assigns Necessities Shopping to location node shop.",
+    "answer": "Necessities Shopping is mapped to campus-map node 'shop'. Use the Campus Saathi campus map to locate this point. The project map currently provides a node reference, not a verified physical room or building name.",
     "required_documents": [],
     "category": "Hostel",
     "related_step": "shop"
+  },
+  {
+    "id": "faq_ug_application_form",
+    "type": "faq",
+    "aliases": [
+      "Where can I get the UG application form?",
+      "UG form kahan milega?",
+      "Undergraduate application form"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/admission.iiitdmj.ac.in/Important%20Forms.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can I get the UG student application form?",
+    "answer": "The official Important Forms page provides an Application Form for UG Students.",
+    "required_documents": [],
+    "category": "Admission"
+  },
+  {
+    "id": "faq_pg_application_form",
+    "type": "faq",
+    "aliases": [
+      "Where can PG students get the application form?",
+      "MTech MDes PhD application form kahan milega?",
+      "PG student form"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/admission.iiitdmj.ac.in/Important%20Forms.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can PG students get the application form?",
+    "answer": "The official Important Forms page provides a separate application form for MTech, MDes and PhD students.",
+    "required_documents": [],
+    "category": "Admission"
+  },
+  {
+    "id": "faq_id_card_form",
+    "type": "faq",
+    "aliases": [
+      "Where can I get the I-card form?",
+      "ID card form kahan milega?",
+      "How to get student identity card form"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/admission.iiitdmj.ac.in/Important%20Forms.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can I get the student I-Card form?",
+    "answer": "The official Important Forms page provides a downloadable I-Card form.",
+    "required_documents": [],
+    "category": "Identity"
+  },
+  {
+    "id": "faq_library_member_id_form",
+    "type": "faq",
+    "aliases": [
+      "How do I get a library member ID?",
+      "Library card ka form kahan hai?",
+      "Library membership form"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/admission.iiitdmj.ac.in/Important%20Forms.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can I get the library member ID form?",
+    "answer": "The official Important Forms page provides a downloadable library member ID form.",
+    "required_documents": [],
+    "category": "Library"
+  },
+  {
+    "id": "faq_cc_login_form",
+    "type": "faq",
+    "aliases": [
+      "Where can I get the computer centre login form?",
+      "CC login form kahan milega?",
+      "Computer Centre account form"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/admission.iiitdmj.ac.in/Important%20Forms.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can I get the Computer Centre login form?",
+    "answer": "The official Important Forms page provides a login form for the Computer Centre.",
+    "required_documents": [],
+    "category": "IT Services"
+  },
+  {
+    "id": "faq_antiragging_affidavit",
+    "type": "faq",
+    "aliases": [
+      "Where is the anti-ragging affidavit format?",
+      "Anti ragging affidavit kahan milega?",
+      "Anti-ragging form"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/admission.iiitdmj.ac.in/Important%20Forms.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can I get the anti-ragging affidavit format?",
+    "answer": "The official Important Forms page provides the proforma for the anti-ragging affidavit.",
+    "required_documents": [],
+    "category": "Admission"
+  },
+  {
+    "id": "faq_medical_certificate_form",
+    "type": "faq",
+    "aliases": [
+      "Where can I get the medical certificate format?",
+      "Medical certificate form kahan milega?",
+      "Medical fitness form"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/admission.iiitdmj.ac.in/Important%20Forms.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can I get the medical certificate form?",
+    "answer": "The official Important Forms page provides a proforma for the medical certificate.",
+    "required_documents": [],
+    "category": "Admission"
+  },
+  {
+    "id": "faq_antidrug_declaration",
+    "type": "faq",
+    "aliases": [
+      "Where is the anti-drug declaration form?",
+      "Anti drug declaration kahan milega?",
+      "Student anti-drug form"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/admission.iiitdmj.ac.in/Important%20Forms.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can I get the anti-drug declaration form?",
+    "answer": "The official Important Forms page provides an anti-drug declaration form to be signed by the student.",
+    "required_documents": [],
+    "category": "Admission"
+  },
+  {
+    "id": "faq_nonsubmission_undertaking",
+    "type": "faq",
+    "aliases": [
+      "Where is the undertaking for missing certificates?",
+      "Certificate submit nahi hua toh undertaking kahan milegi?",
+      "Non-submission certificate undertaking"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/admission.iiitdmj.ac.in/Important%20Forms.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can I get the undertaking for non-submission of a certificate?",
+    "answer": "The official Important Forms page provides an undertaking form for non-submission of a certificate.",
+    "required_documents": [],
+    "category": "Admission"
+  },
+  {
+    "id": "faq_online_certificate_undertaking",
+    "type": "faq",
+    "aliases": [
+      "Where is the online certificate undertaking?",
+      "Online document undertaking kahan milega?",
+      "Undertaking for online documents"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/admission.iiitdmj.ac.in/Important%20Forms.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can I get the undertaking for online certificates?",
+    "answer": "The official Important Forms page provides an undertaking form for online certificates.",
+    "required_documents": [],
+    "category": "Admission"
+  },
+  {
+    "id": "faq_no_dues_form",
+    "type": "faq",
+    "aliases": [
+      "Where can I get the No Dues form?",
+      "No dues form kahan milega?",
+      "How to get institute clearance form"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/admission.iiitdmj.ac.in/Important%20Forms.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can I get the institute No-Dues form?",
+    "answer": "The official Important Forms page provides a downloadable No-Dues form.",
+    "required_documents": [],
+    "category": "Administration"
+  },
+  {
+    "id": "faq_withdrawal_form",
+    "type": "faq",
+    "aliases": [
+      "Where can I get the withdrawal form?",
+      "Admission withdraw ka form kahan milega?",
+      "Student withdrawal application"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/admission.iiitdmj.ac.in/Important%20Forms.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can I get the withdrawal form?",
+    "answer": "The official Important Forms page provides a downloadable withdrawal form.",
+    "required_documents": [],
+    "category": "Administration"
+  },
+  {
+    "id": "faq_fee_structure",
+    "type": "faq",
+    "aliases": [
+      "Where can I check institute fees?",
+      "Fee structure kahan milega?",
+      "How much are the academic fees?"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/academics/admission/fee_structure.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can I check the official fee structure?",
+    "answer": "The institute's Fee Structure page publishes batch-wise fee documents for B.Tech, B.Des, M.Tech, M.Des and PhD programmes.",
+    "required_documents": [],
+    "category": "Fees"
+  },
+  {
+    "id": "faq_semester_fee_period",
+    "type": "faq",
+    "aliases": [
+      "Is the semester fee yearly or per semester?",
+      "Semester fees ek semester ki hai ya saal ki?",
+      "Fee structure semester clarification"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/academics/admission/fee_structure.php",
+    "last_verified": "2026-11-12",
+    "question": "Are the listed semester fees charged per semester?",
+    "answer": "The institute clarifies that amounts shown under 'Semester Fees' are fees for one semester.",
+    "required_documents": [],
+    "category": "Fees"
+  },
+  {
+    "id": "faq_online_fee_payment",
+    "type": "faq",
+    "aliases": [
+      "How can I pay my institute fees online?",
+      "Online fees kaise pay karein?",
+      "Indian Bank CCAvenue fee payment"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/academics/admission/fee_structure.php",
+    "last_verified": "2026-11-12",
+    "question": "What online payment option does the institute publish for fees?",
+    "answer": "The official Fee Structure page provides an Indian Bank–CCAvenue fee payment link for online payment.",
+    "required_documents": [],
+    "category": "Fees"
+  },
+  {
+    "id": "faq_fee_deadline",
+    "type": "faq",
+    "aliases": [
+      "What is the last date to pay fees?",
+      "Fees bharne ki last date kya hai?",
+      "Fee payment deadline"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/academics/admission/fee_structure.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can I check the deadline for fee payment?",
+    "answer": "The Fee Structure page publishes fee amounts and payment access but does not state one universal deadline; check the latest batch-specific admission notice or academic instructions.",
+    "required_documents": [],
+    "category": "Fees"
+  },
+  {
+    "id": "faq_residential_policy",
+    "type": "faq",
+    "aliases": [
+      "Is IIITDM Jabalpur a residential campus?",
+      "Kya campus mein rehna compulsory hai?",
+      "Do students have to stay in hostels?"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/hostels.php",
+    "last_verified": "2026-11-12",
+    "question": "Is staying on campus compulsory for students?",
+    "answer": "The institute describes IIITDM Jabalpur as a fully residential institute and states that students are required to reside on campus.",
+    "required_documents": [],
+    "category": "Hostel"
+  },
+  {
+    "id": "faq_hostel_names",
+    "type": "faq",
+    "aliases": [
+      "What are the names of the hostels?",
+      "Campus mein kaun kaun se hostels hain?",
+      "List of IIITDM Jabalpur hostels"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/hostels.php",
+    "last_verified": "2026-11-12",
+    "question": "Which hostels are listed by the institute?",
+    "answer": "The institute lists Vasishtha, Aryabhatta, Vivekananda, Panini, Maa Saraswati Girls Hostel and Nagarjuna Hostel.",
+    "required_documents": [],
+    "category": "Hostel"
+  },
+  {
+    "id": "faq_hostel_warden_contact",
+    "type": "faq",
+    "aliases": [
+      "Whom should I contact for hostel issues?",
+      "Hostel problem ke liye kisse contact karein?",
+      "Who manages hostel administration?"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/hostels.php",
+    "last_verified": "2026-11-12",
+    "question": "Whom should I approach for hostel-related issues?",
+    "answer": "The institute's hostel page publishes the hostel administration details, including the Chief Warden and the warden assigned to each hostel. Contact the warden of your allotted hostel.",
+    "required_documents": [],
+    "category": "Hostel"
+  },
+  {
+    "id": "faq_hostel_hec",
+    "type": "faq",
+    "aliases": [
+      "What is HEC in the hostel?",
+      "Hostel HEC kya hota hai?",
+      "Who represents hostel residents?"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/hostels.php",
+    "last_verified": "2026-11-12",
+    "question": "What is the Hall Executive Committee?",
+    "answer": "Each hostel has a Hall Executive Committee (HEC) made up of elected resident students and headed by the respective hostel warden.",
+    "required_documents": [],
+    "category": "Hostel"
+  },
+  {
+    "id": "faq_hall1_quiet_hours",
+    "type": "faq",
+    "aliases": [
+      "What are quiet hours in Hall 1?",
+      "Hall 1 mein raat ko shor kab mana hai?",
+      "Hall-1 noise rules"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/hall1.iiitdmj.ac.in/pdf/guide.pdf",
+    "last_verified": "2026-11-12",
+    "question": "What quiet-hour rule is published for Hall-1 residents?",
+    "answer": "The published Hall-1 resident guidelines state that students should not make noise after 22:00 hours. This is a Hall-1-specific guideline.",
+    "required_documents": [],
+    "category": "Hostel"
+  },
+  {
+    "id": "faq_hall1_late_exit",
+    "type": "faq",
+    "aliases": [
+      "What should I do if I leave Hall 1 after 10:30 PM?",
+      "10:30 ke baad Hall 1 se bahar jaane par kya karna hai?",
+      "Hall-1 late exit register"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/hall1.iiitdmj.ac.in/pdf/guide.pdf",
+    "last_verified": "2026-11-12",
+    "question": "What is the late-exit register rule in Hall-1?",
+    "answer": "The published Hall-1 guidelines require a resident leaving the hostel after 10:30 PM to sign the register kept for this purpose. This is a Hall-1-specific rule.",
+    "required_documents": [],
+    "category": "Hostel"
+  },
+  {
+    "id": "faq_hall1_room_vacation",
+    "type": "faq",
+    "aliases": [
+      "Can I keep my Hall 1 room during vacation?",
+      "Vacation mein hostel room rakh sakte hain?",
+      "Hall-1 room vacation permission"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/hall1.iiitdmj.ac.in/pdf/guide.pdf",
+    "last_verified": "2026-11-12",
+    "question": "Can a Hall-1 resident retain their room during semester vacation?",
+    "answer": "The Hall-1 guidelines state that residents should vacate their rooms at the end of each semester; retaining a room during vacation requires prior permission from the warden with a valid reason.",
+    "required_documents": [],
+    "category": "Hostel"
+  },
+  {
+    "id": "faq_bonafide_application",
+    "type": "faq",
+    "aliases": [
+      "How do I apply for a bonafide certificate?",
+      "Bonafide certificate kaise banwayein?",
+      "Bonafide certificate application process"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/downloads/forms/H_152_Form_Passport%20Bonafinde.pdf",
+    "last_verified": "2026-11-12",
+    "question": "How can I apply for a bonafide certificate?",
+    "answer": "The institute provides an application form for a bonafide certificate for passport purposes. The form is addressed to the Dean (Students) and includes academic and hostel verification sections.",
+    "required_documents": [
+      "Completed bonafide certificate application form",
+      "Fee receipt, if applicable, as instructed on the form"
+    ],
+    "category": "Certificates"
+  },
+  {
+    "id": "faq_bonafide_processing",
+    "type": "faq",
+    "aliases": [
+      "How long does a bonafide certificate take?",
+      "Bonafide certificate kitne din mein milega?",
+      "Bonafide certificate collection time"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/downloads/forms/H_152_Form_Passport%20Bonafinde.pdf",
+    "last_verified": "2026-11-12",
+    "question": "When can I collect the bonafide certificate after applying?",
+    "answer": "The published bonafide application form instructs students to collect the requested certificate after three days of submitting the application.",
+    "required_documents": [],
+    "category": "Certificates"
+  },
+  {
+    "id": "faq_bonafide_form_details",
+    "type": "faq",
+    "aliases": [
+      "What details are needed in the bonafide form?",
+      "Bonafide form mein kya details bharni hain?",
+      "Bonafide application information"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/downloads/forms/H_152_Form_Passport%20Bonafinde.pdf",
+    "last_verified": "2026-11-12",
+    "question": "What information does the bonafide certificate application form ask for?",
+    "answer": "The form asks for student details including name, roll number, programme, discipline, place and date of birth, parents' names, permanent address, mobile number and admission month/year.",
+    "required_documents": [],
+    "category": "Certificates"
+  },
+  {
+    "id": "faq_dean_students_contact",
+    "type": "faq",
+    "aliases": [
+      "How do I contact the Dean Students office?",
+      "Dean Students office se kaise contact karein?",
+      "Student affairs office contact"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/dean_office.php",
+    "last_verified": "2026-11-12",
+    "question": "How can I contact the Office of Dean (Students)?",
+    "answer": "The institute lists the Faculty-in-Charge (Student Affairs) contact as 0761-2794171 and dean.s@iiitdmj.ac.in.",
+    "required_documents": [],
+    "category": "Student Affairs"
+  },
+  {
+    "id": "faq_scholarship_notices",
+    "type": "faq",
+    "aliases": [
+      "Where can I find scholarship information?",
+      "Scholarship ki information kahan milegi?",
+      "Institute scholarship notices"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/index.php/en/scholarship.php",
+    "last_verified": "2026-11-12",
+    "question": "Where can I find official scholarship information?",
+    "answer": "The institute's scholarship page lists scholarship schemes and related notices. Check the individual notice for current eligibility, application requirements and deadlines.",
+    "required_documents": [],
+    "category": "Scholarships"
+  },
+  {
+    "id": "faq_library_page",
+    "type": "faq",
+    "aliases": [
+      "Where can I find library information?",
+      "Library ki official website kya hai?",
+      "Central library details"
+    ],
+    "node_id": null,
+    "source": "https://web.iiitdmj.ac.in/library.html",
+    "last_verified": "2026-11-12",
+    "question": "Where can I find the institute's Central Library information?",
+    "answer": "The institute provides a dedicated Central Library webpage. Consult that page or the library office for current timings and borrowing rules.",
+    "required_documents": [],
+    "category": "Library"
+  },
+  {
+    "id": "faq_revised_ug_guidelines",
+    "type": "faq",
+    "aliases": [
+      "Which academic guidelines apply to UG students?",
+      "UG ke naye academic rules kab se lagu hain?",
+      "Revised undergraduate academic guidelines"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/internal-circulars.php",
+    "last_verified": "2026-11-12",
+    "question": "When did the revised UG Academic Guidelines come into effect?",
+    "answer": "The institute notification dated February 10, 2026 states that the revised Academic Guidelines for the UG Programme came into force from January 2026. Consult the full guideline for specific examination and academic rules.",
+    "required_documents": [],
+    "category": "Examinations"
+  },
+  {
+    "id": "faq_pg_admission_documents",
+    "type": "faq",
+    "aliases": [
+      "What documents are needed for PG admission?",
+      "MTech MDes PhD admission documents kya chahiye?",
+      "PG document verification checklist",
+      "Documents required for postgraduate registration"
+    ],
+    "node_id": null,
+    "source": "https://admission.iiitdmj.ac.in/PG%20Admission.php",
+    "last_verified": "2026-11-12",
+    "question": "Which documents are required for PG admission document verification?",
+    "answer": "The institute's 2026 PG admission checklist asks candidates to bring the original provisional admission/allotment/offer letter; Class X, Class XII and UG marksheets; UG degree certificate; applicable GATE/CEED scorecard; original transfer, character and migration certificates; applicable category or PwD certificates; and the CCMT fee receipt. Bring one set of photocopies as well.",
+    "required_documents": [
+      "Original provisional admission letter, allotment letter or offer letter",
+      "Class X marksheet",
+      "Class XII marksheet",
+      "UG marksheets",
+      "UG degree certificate",
+      "GATE/CEED scorecard, if applicable",
+      "Original transfer certificate",
+      "Original character certificate",
+      "Original migration certificate",
+      "Category certificate, if applicable",
+      "PwD certificate, if applicable",
+      "CCMT fee receipt",
+      "One set of photocopies"
+    ],
+    "category": "Admission"
+  },
+  {
+    "id": "faq_ug_admission_documents",
+    "type": "faq",
+    "aliases": [
+      "What documents are required for UG admission?",
+      "BTech BDes admission ke liye kaunse documents chahiye?",
+      "UG document verification checklist",
+      "Documents needed for undergraduate registration"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/undergraduate-programs.php",
+    "last_verified": "2026-11-12",
+    "question": "Which documents are required for UG admission document verification?",
+    "answer": "For AY 2026–27 UG document verification, the institute lists the original admission/allotment/offer letter; Class X and XII marksheets; JEE Main scorecard and admit card; original transfer, character and migration certificates; applicable category and PwD certificates; fee receipts; medical fitness certificate; anti-ragging and anti-drug declarations; Aadhaar copy; and five passport-size photographs. Bring originals and one set of photocopies.",
+    "required_documents": [
+      "Original provisional admission/allotment/offer letter",
+      "Class X marksheet",
+      "Class XII marksheet",
+      "JEE Main scorecard and admit card",
+      "Original transfer certificate",
+      "Original character certificate",
+      "Original migration certificate",
+      "Category certificate, if applicable",
+      "Caste validity certificate for Maharashtra candidates, as applicable",
+      "PwD certificate, if applicable",
+      "JoSAA/CSAB/UCEED fee receipt",
+      "Medical fitness certificate in the prescribed format",
+      "Anti-ragging declaration",
+      "Anti-drug declaration",
+      "Online receipt of remaining institute fee",
+      "Aadhaar card copy",
+      "Five passport-size photographs",
+      "One set of photocopies"
+    ],
+    "category": "Admission"
   }
 ]

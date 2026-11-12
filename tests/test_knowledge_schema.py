@@ -176,3 +176,22 @@ def test_unknown_contact_id_fails(tmp_path, monkeypatch, capsys):
 
     assert validator.validate_knowledge() is False
     assert "unknown contact_id" in capsys.readouterr().out
+
+
+def test_every_step_has_a_procedure_faq():
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    steps = json.loads((root / "data/steps.json").read_text())
+    faqs = json.loads(
+        (root / "data/knowledge/faqs.json").read_text()
+    )
+
+    related_steps = {
+        faq.get("related_step")
+        for faq in faqs
+        if faq.get("related_step") is not None
+    }
+
+    missing = set(steps) - related_steps
+    assert not missing, f"Steps without FAQs: {sorted(missing)}"

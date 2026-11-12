@@ -109,3 +109,98 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* Issue #53: Information unavailable response */
+
+.unavailable-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 16px;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  border-left: 4px solid #f59e0b;
+  border-radius: 14px;
+  background: rgba(120, 53, 15, 0.16);
+  color: #f1f5f9;
+  box-sizing: border-box;
+}
+
+.unavailable-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: #fbbf24;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.unavailable-card-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.15);
+  font-size: 17px;
+}
+
+.unavailable-card-message {
+  color: #cbd5e1;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.official-website-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 9px 14px;
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  border-radius: 9px;
+  background: rgba(8, 145, 178, 0.2);
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.official-website-button:hover {
+  background: rgba(8, 145, 178, 0.35);
+}
+
+.suggested-contact {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.suggested-contact-title {
+  margin-bottom: 7px;
+  color: #e2e8f0;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.suggested-contact-details {
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .unavailable-card {
+    max-width: 100%;
+    padding: 13px;
+  }
+
+  .official-website-button {
+    width: 100%;
+  }
+}

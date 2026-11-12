@@ -1,22 +1,200 @@
-
 [
   {
-    "id": "faq_test_001",
+    "id": "faq_procedure_gate",
     "type": "faq",
     "aliases": [
-      "Test Question",
-      "परीक्षण प्रश्न",
-      "test sawaal"
+      "Where do I go for Entry Reporting & ID Verification?",
+      "Where is Entry Reporting & ID Verification?",
+      "Entry Reporting & ID Verification ke liye kahan jaana hai?",
+      "Entry Reporting & ID Verification kahan hota hai?"
     ],
     "node_id": "gate",
-    "source": "TEST DATA",
+    "source": "data/steps.json",
     "last_verified": "2026-11-12",
-    "question": "Where is the campus entry point?",
-    "answer": "This is a dummy answer for schema testing.",
-    "required_documents": [
-      "Test ID"
-    ],
-    "category": "General",
+    "question": "Where should I go for Entry Reporting & ID Verification?",
+    "answer": "The campus procedure map assigns Entry Reporting & ID Verification to location node gate.",
+    "required_documents": [],
+    "category": "Neutral",
     "related_step": "gate"
+  },
+  {
+    "id": "faq_procedure_lhtc_gate",
+    "type": "faq",
+    "aliases": [
+      "Where do I go for Allotment Verification?",
+      "Where is Allotment Verification?",
+      "Allotment Verification ke liye kahan jaana hai?",
+      "Allotment Verification kahan hota hai?"
+    ],
+    "node_id": "lhtc_gate",
+    "source": "data/steps.json",
+    "last_verified": "2026-11-12",
+    "question": "Where should I go for Allotment Verification?",
+    "answer": "The campus procedure map assigns Allotment Verification to location node lhtc_gate.",
+    "required_documents": [],
+    "category": "Academic",
+    "related_step": "lhtc_gate"
+  },
+  {
+    "id": "faq_procedure_l_103",
+    "type": "faq",
+    "aliases": [
+      "Where do I go for Document Verification?",
+      "Where is Document Verification?",
+      "Document Verification ke liye kahan jaana hai?",
+      "Document Verification kahan hota hai?"
+    ],
+    "node_id": "L-103",
+    "source": "data/steps.json",
+    "last_verified": "2026-11-12",
+    "question": "Where should I go for Document Verification?",
+    "answer": "The campus procedure map assigns Document Verification to location node L-103.",
+    "required_documents": [],
+    "category": "Academic",
+    "related_step": "L-103"
+  },
+  {
+    "id": "faq_procedure_l_104",
+    "type": "faq",
+    "aliases": [
+      "Where do I go for Fee Clearance & Accounts?",
+      "Where is Fee Clearance & Accounts?",
+      "Fee Clearance & Accounts ke liye kahan jaana hai?",
+      "Fee Clearance & Accounts kahan hota hai?"
+    ],
+    "node_id": "L-104",
+    "source": "data/steps.json",
+    "last_verified": "2026-11-12",
+    "question": "Where should I go for Fee Clearance & Accounts?",
+    "answer": "The campus procedure map assigns Fee Clearance & Accounts to location node L-104.",
+    "required_documents": [],
+    "category": "Academic",
+    "related_step": "L-104"
+  },
+  {
+    "id": "faq_procedure_l_105",
+    "type": "faq",
+    "aliases": [
+      "Where do I go for Department Registration?",
+      "Where is Department Registration?",
+      "Department Registration ke liye kahan jaana hai?",
+      "Department Registration kahan hota hai?"
+    ],
+    "node_id": "L-105",
+    "source": "data/steps.json",
+    "last_verified": "2026-11-12",
+    "question": "Where should I go for Department Registration?",
+    "answer": "The campus procedure map assigns Department Registration to location node L-105.",
+    "required_documents": [],
+    "category": "Academic",
+    "related_step": "L-105"
+  },
+  {
+    "id": "faq_procedure_l_106",
+    "type": "faq",
+    "aliases": [
+      "Where do I go for ID Card Biometrics?",
+      "Where is ID Card Biometrics?",
+      "ID Card Biometrics ke liye kahan jaana hai?",
+      "ID Card Biometrics kahan hota hai?"
+    ],
+    "node_id": "L-106",
+    "source": "data/steps.json",
+    "last_verified": "2026-11-12",
+    "question": "Where should I go for ID Card Biometrics?",
+    "answer": "The campus procedure map assigns ID Card Biometrics to location node L-106.",
+    "required_documents": [],
+    "category": "Academic",
+    "related_step": "L-106"
+  },
+  {
+    "id": "faq_procedure_l_206",
+    "type": "faq",
+    "aliases": [
+      "Where do I go for Library Membership?",
+      "Where is Library Membership?",
+      "Library Membership ke liye kahan jaana hai?",
+      "Library Membership kahan hota hai?"
+    ],
+    "node_id": "L-206",
+    "source": "data/steps.json",
+    "last_verified": "2026-11-12",
+    "question": "Where should I go for Library Membership?",
+    "answer": "The campus procedure map assigns Library Membership to location node L-206.",
+    "required_documents": [],
+    "category": "Academic",
+    "related_step": "L-206"
+  },
+  {
+    "id": "faq_procedure_panini_gate",
+    "type": "faq",
+    "aliases": [
+      "Where do I go for Hostel Allotment Letter?",
+      "Where is Hostel Allotment Letter?",
+      "Hostel Allotment Letter ke liye kahan jaana hai?",
+      "Hostel Allotment Letter kahan hota hai?"
+    ],
+    "node_id": "panini_gate",
+    "source": "data/steps.json",
+    "last_verified": "2026-11-12",
+    "question": "Where should I go for Hostel Allotment Letter?",
+    "answer": "The campus procedure map assigns Hostel Allotment Letter to location node panini_gate.",
+    "required_documents": [],
+    "category": "Hostel",
+    "related_step": "panini_gate"
+  },
+  {
+    "id": "faq_procedure_room",
+    "type": "faq",
+    "aliases": [
+      "Where do I go for Room Inspection?",
+      "Where is Room Inspection?",
+      "Room Inspection ke liye kahan jaana hai?",
+      "Room Inspection kahan hota hai?"
+    ],
+    "node_id": "room",
+    "source": "data/steps.json",
+    "last_verified": "2026-11-12",
+    "question": "Where should I go for Room Inspection?",
+    "answer": "The campus procedure map assigns Room Inspection to location node room.",
+    "required_documents": [],
+    "category": "Hostel",
+    "related_step": "room"
+  },
+  {
+    "id": "faq_procedure_office",
+    "type": "faq",
+    "aliases": [
+      "Where do I go for Warden Clearance?",
+      "Where is Warden Clearance?",
+      "Warden Clearance ke liye kahan jaana hai?",
+      "Warden Clearance kahan hota hai?"
+    ],
+    "node_id": "office",
+    "source": "data/steps.json",
+    "last_verified": "2026-11-12",
+    "question": "Where should I go for Warden Clearance?",
+    "answer": "The campus procedure map assigns Warden Clearance to location node office.",
+    "required_documents": [],
+    "category": "Hostel",
+    "related_step": "office"
+  },
+  {
+    "id": "faq_procedure_shop",
+    "type": "faq",
+    "aliases": [
+      "Where do I go for Necessities Shopping?",
+      "Where is Necessities Shopping?",
+      "Necessities Shopping ke liye kahan jaana hai?",
+      "Necessities Shopping kahan hota hai?"
+    ],
+    "node_id": "shop",
+    "source": "data/steps.json",
+    "last_verified": "2026-11-12",
+    "question": "Where should I go for Necessities Shopping?",
+    "answer": "The campus procedure map assigns Necessities Shopping to location node shop.",
+    "required_documents": [],
+    "category": "Hostel",
+    "related_step": "shop"
   }
 ]

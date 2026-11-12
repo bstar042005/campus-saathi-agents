@@ -1,21 +1,460 @@
-
 [
   {
-    "id": "contact_test_001",
+    "id": "koushikdutta@iiitdmj.ac.in",
     "type": "contact",
     "aliases": [
-      "Test Office",
-      "परीक्षण कार्यालय",
-      "test daftar"
+      "Cultural Council counselor",
+      "cultural counsellor",
+      "Koushik Dutta"
     ],
-    "node_id": "office",
-    "source": "TEST DATA",
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
     "last_verified": "2026-11-12",
-    "name": "Test Contact",
-    "office": "Test Office",
+    "name": "Dr. Koushik Dutta",
+    "office": "Counselor, Cultural Council (Gymkhana)",
+    "phone": "9163080083",
+    "email": "koushikdutta@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "amitv@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Science and Technology Council counselor",
+      "S&T counselor",
+      "technical council counselor",
+      "Amit Vishwakarma"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Dr. Amit K. Vishwakarma",
+    "office": "Counselor, Science & Technology Council (Gymkhana)",
+    "phone": "0761-2794481",
+    "email": "amitv@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "dip.samajdar@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Sports Council counselor",
+      "sports counsellor",
+      "Dip Prakash Samajdar"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Dr. Dip Prakash Samajdar",
+    "office": "Counselor, Sports Council (Gymkhana)",
+    "phone": "0761-2794474",
+    "email": "dip.samajdar@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "nihar@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "gym faculty coordinator",
+      "Nihar Kumar Mahato"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Dr. Nihar Kumar Mahato",
+    "office": "Faculty coordinator, Gymnasium and Athletics (Sports Council)",
+    "phone": "0761-2794347",
+    "email": "nihar@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "avish.p@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "kabaddi faculty coordinator",
+      "Avinash Chandra Pandey"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Dr. Avinash Chandra Pandey",
+    "office": "Faculty coordinator, Kabaddi, Lawn Tennis and Table Tennis (Sports Council)",
     "phone": null,
-    "email": null,
-    "location_text": "Test Location",
+    "email": "avish.p@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "shivdayal@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "yoga faculty coordinator",
+      "Shivdayal Patel"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Dr. Shivdayal Patel",
+    "office": "Faculty coordinator, Yoga & Meditation (Sports Council)",
+    "phone": "0761-2794428",
+    "email": "shivdayal@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "aavartan@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Aavartan - The Dance Club"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Aavartan - The Dance Club (club email)",
+    "office": "Cultural Council, Gymkhana",
+    "phone": null,
+    "email": "aavartan@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "shutterbox@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Shutterbox"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Shutterbox (club email)",
+    "office": "Cultural Council, Gymkhana",
+    "phone": null,
+    "email": "shutterbox@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "jazbaat@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Jazbaat - The Dramatics Society Club"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Jazbaat - The Dramatics Society Club (club email)",
+    "office": "Cultural Council, Gymkhana",
+    "phone": null,
+    "email": "jazbaat@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "saaz@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Saaz - The Music Club"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Saaz - The Music Club (club email)",
+    "office": "Cultural Council, Gymkhana",
+    "phone": null,
+    "email": "saaz@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "samvaad@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Samvaad - The Literature & Quizzing Society Club"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Samvaad - The Literature & Quizzing Society Club (club email)",
+    "office": "Cultural Council, Gymkhana",
+    "phone": null,
+    "email": "samvaad@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "astronomy@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Astronomy & Physics Society Club"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Astronomy & Physics Society Club (club email)",
+    "office": "Science & Technology Council, Gymkhana",
+    "phone": null,
+    "email": "astronomy@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "afc@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Aero Fabrication Club"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Aero Fabrication Club (club email)",
+    "office": "Science & Technology Council, Gymkhana",
+    "phone": null,
+    "email": "afc@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "bmc@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Business and Management Club"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Business and Management Club (club email)",
+    "office": "Science & Technology Council, Gymkhana",
+    "phone": null,
+    "email": "bmc@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "cadclub@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "CAD and 3D Printing Club"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "CAD and 3D Printing Club (club email)",
+    "office": "Science & Technology Council, Gymkhana",
+    "phone": null,
+    "email": "cadclub@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "racing@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "IIITDMJ Racing Club"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "IIITDMJ Racing Club (club email)",
+    "office": "Science & Technology Council, Gymkhana",
+    "phone": null,
+    "email": "racing@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "theprogclub@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "The Programming Club"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "The Programming Club (club email)",
+    "office": "Science & Technology Council, Gymkhana",
+    "phone": null,
+    "email": "theprogclub@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "ers@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Electronics and Robotics Society"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Electronics and Robotics Society (club email)",
+    "office": "Science & Technology Council, Gymkhana",
+    "phone": null,
+    "email": "ers@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "athletic@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Athletics"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Athletics (club email)",
+    "office": "Sports Council, Gymkhana",
+    "phone": null,
+    "email": "athletic@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "badminton@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Badminton"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Badminton (club email)",
+    "office": "Sports Council, Gymkhana",
+    "phone": null,
+    "email": "badminton@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "basketball@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Basketball"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Basketball (club email)",
+    "office": "Sports Council, Gymkhana",
+    "phone": null,
+    "email": "basketball@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "carrom@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Carrom"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Carrom (club email)",
+    "office": "Sports Council, Gymkhana",
+    "phone": null,
+    "email": "carrom@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "chess@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Chess"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Chess (club email)",
+    "office": "Sports Council, Gymkhana",
+    "phone": null,
+    "email": "chess@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "cricket@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Cricket"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Cricket (club email)",
+    "office": "Sports Council, Gymkhana",
+    "phone": null,
+    "email": "cricket@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "football@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Football"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Football (club email)",
+    "office": "Sports Council, Gymkhana",
+    "phone": null,
+    "email": "football@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "lawntennis@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Lawn Tennis"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Lawn Tennis (club email)",
+    "office": "Sports Council, Gymkhana",
+    "phone": null,
+    "email": "lawntennis@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "tabletennis@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Table Tennis"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Table Tennis (club email)",
+    "office": "Sports Council, Gymkhana",
+    "phone": null,
+    "email": "tabletennis@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
+    "hours": null
+  },
+  {
+    "id": "volleyball@iiitdmj.ac.in",
+    "type": "contact",
+    "aliases": [
+      "Volleyball"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Volleyball (club email)",
+    "office": "Sports Council, Gymkhana",
+    "phone": null,
+    "email": "volleyball@iiitdmj.ac.in",
+    "location_text": "Not listed on the official clubs page; contact by email.",
     "hours": null
   }
 ]

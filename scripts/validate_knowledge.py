@@ -5,7 +5,6 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
-# Add project root to Python path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
@@ -16,12 +15,11 @@ KNOWLEDGE_DIR = ROOT / "data" / "knowledge"
 CAMPUS_MAP_FILE = ROOT / "data" / "campus_map.json"
 STEPS_FILE = ROOT / "data" / "steps.json"
 
-# Connect each JSON file to its Pydantic model
 FILE_MODELS = {
     "contacts.json": Contact,
     "clubs.json": Club,
     "faqs.json": FaqEntry,
-    "official_links.json": OfficialLink,
+    "links.json": OfficialLink,
 }
 
 
@@ -41,7 +39,7 @@ def validate_knowledge():
     all_ids = {}
     contact_ids = set()
 
-    # Load campus nodes
+
     campus_data = load_json(CAMPUS_MAP_FILE)
     if not isinstance(campus_data, dict) or not isinstance(
         campus_data.get("nodes"), dict
@@ -51,7 +49,7 @@ def validate_knowledge():
     else:
         campus_nodes = set(campus_data["nodes"].keys())
 
-    # Load valid step keys
+
     steps_data = load_json(STEPS_FILE)
     if not isinstance(steps_data, dict):
         errors.append("steps.json: expected a JSON object")
@@ -59,7 +57,6 @@ def validate_knowledge():
     else:
         step_keys = set(steps_data.keys())
 
-    # Validate each knowledge file
     for filename, model in FILE_MODELS.items():
         path = KNOWLEDGE_DIR / filename
         data = load_json(path)
@@ -81,7 +78,6 @@ def validate_knowledge():
 
             record_id = record.get("id", f"record #{index + 1}")
 
-            # Check duplicate IDs across all four files
             if isinstance(record.get("id"), str):
                 current_id = record["id"]
                 if current_id in all_ids:
@@ -92,13 +88,11 @@ def validate_knowledge():
                 else:
                     all_ids[current_id] = filename
 
-            # Keep contact IDs for cross-file reference checks
             if filename == "contacts.json" and isinstance(
                 record.get("id"), str
             ):
                 contact_ids.add(record["id"])
 
-            # Validate record against its Pydantic model
             try:
                 validated_record = model.model_validate(record)
                 records.append((filename, record_id, validated_record))
@@ -112,17 +106,14 @@ def validate_knowledge():
                         f"{filename} | {record_id} | {field}: {reason}"
                     )
 
-    # Validate references between records and project data
     for filename, record_id, record in records:
 
-        # Check campus map node references
         if record.node_id is not None and record.node_id not in campus_nodes:
             errors.append(
                 f"{filename} | {record_id}: "
                 f"unknown node_id '{record.node_id}'"
             )
 
-        # Check club contact references
         if isinstance(record, Club):
             if (
                 record.contact_id is not None
@@ -133,7 +124,6 @@ def validate_knowledge():
                     f"unknown contact_id '{record.contact_id}'"
                 )
 
-        # Check FAQ step references
         if isinstance(record, FaqEntry):
             if (
                 record.related_step is not None
@@ -144,7 +134,6 @@ def validate_knowledge():
                     f"unknown related_step '{record.related_step}'"
                 )
 
-    # Print final result
     print("\n========== KNOWLEDGE VALIDATION ==========")
 
     if errors:

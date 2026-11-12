@@ -47,11 +47,9 @@ TOOLS = [
         "function": {
             "name": "simulate_all_paths",
             "description": (
-                "Run simulations across all a
-              vailable pathfinding "
-                "algorithms and return their respective metrics and trajectories."
-            ),
-            "parameters": {
+    "Run simulations across all available pathfinding "
+    "algorithms and return their respective metrics and trajectories."
+),            "parameters": {
                 "type": "object",
                 "properties": {
                     "current_location": {

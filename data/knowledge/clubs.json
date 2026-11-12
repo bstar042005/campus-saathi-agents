@@ -15,6 +15,6 @@
     "category": "Technical",
     "description": "Dummy club record for schema testing.",
     "how_to_join": "Contact the test office for joining information.",
-    "contact_id": "contact_test_001"
+    "contact_id": null
   }
 ]

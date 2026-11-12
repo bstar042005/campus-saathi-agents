@@ -1,20 +1,478 @@
-
 [
   {
-    "id": "club_test_001",
+    "id": "aavartan",
     "type": "club",
     "aliases": [
-      "Test Club",
-      "परीक्षण क्लब",
-      "test samiti"
+      "Aavartan",
+      "Avartan",
+      "dance club",
+      "dance society",
+      "nritya",
+      "नृत्य"
     ],
     "node_id": null,
-    "source": "TEST DATA",
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
     "last_verified": "2026-11-12",
-    "name": "Test Club",
+    "name": "Aavartan - The Dance Club",
+    "category": "Cultural",
+    "description": "Dance club under the Cultural Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Cultural Council counselor.",
+    "contact_id": "aavartan@iiitdmj.ac.in"
+  },
+  {
+    "id": "abhivayakti",
+    "type": "club",
+    "aliases": [
+      "Abhivayakti",
+      "Abhivyakti",
+      "arts and craft club",
+      "art club",
+      "craft club",
+      "kala",
+      "कला"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Abhivayakti - The Arts & Craft Club",
+    "category": "Cultural",
+    "description": "Arts and crafts club under the Cultural Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps or a club email. Ask the listed faculty contact or the Cultural Council counselor.",
+    "contact_id": "koushikdutta@iiitdmj.ac.in"
+  },
+  {
+    "id": "shutterbox",
+    "type": "club",
+    "aliases": [
+      "Shutterbox",
+      "Shutter Box"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Shutterbox",
+    "category": "Cultural",
+    "description": "Club under the Cultural Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Cultural Council counselor.",
+    "contact_id": "shutterbox@iiitdmj.ac.in"
+  },
+  {
+    "id": "jazbaat",
+    "type": "club",
+    "aliases": [
+      "Jazbaat",
+      "dramatics society",
+      "drama club",
+      "theatre club",
+      "natak",
+      "नाटक"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Jazbaat - The Dramatics Society Club",
+    "category": "Cultural",
+    "description": "Dramatics society under the Cultural Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Cultural Council counselor.",
+    "contact_id": "jazbaat@iiitdmj.ac.in"
+  },
+  {
+    "id": "saaz",
+    "type": "club",
+    "aliases": [
+      "Saaz",
+      "music club",
+      "music society",
+      "sangeet",
+      "संगीत"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Saaz - The Music Club",
+    "category": "Cultural",
+    "description": "Music club under the Cultural Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Cultural Council counselor.",
+    "contact_id": "saaz@iiitdmj.ac.in"
+  },
+  {
+    "id": "samvaad",
+    "type": "club",
+    "aliases": [
+      "Samvaad",
+      "literature society",
+      "quizzing society",
+      "quiz club",
+      "literary club",
+      "sahitya",
+      "साहित्य"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Samvaad - The Literature & Quizzing Society Club",
+    "category": "Cultural",
+    "description": "Literature and quizzing society under the Cultural Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Cultural Council counselor.",
+    "contact_id": "samvaad@iiitdmj.ac.in"
+  },
+  {
+    "id": "aps",
+    "type": "club",
+    "aliases": [
+      "Astronomy Club",
+      "Physics Society",
+      "astronomy and physics society",
+      "APS",
+      "khagol",
+      "खगोल"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Astronomy & Physics Society Club",
     "category": "Technical",
-    "description": "Dummy club record for schema testing.",
-    "how_to_join": "Contact the test office for joining information.",
-    "contact_id": null
+    "description": "Astronomy and physics society under the Science & Technology Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Science & Technology Council counselor.",
+    "contact_id": "astronomy@iiitdmj.ac.in"
+  },
+  {
+    "id": "afc",
+    "type": "club",
+    "aliases": [
+      "AFC",
+      "aero fabrication",
+      "fabrication club",
+      "Automotive & Fabrication Club"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Aero Fabrication Club",
+    "category": "Technical",
+    "description": "Aero fabrication club under the Science & Technology Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Science & Technology Council counselor.",
+    "contact_id": "afc@iiitdmj.ac.in"
+  },
+  {
+    "id": "bmc",
+    "type": "club",
+    "aliases": [
+      "BMC",
+      "business club",
+      "management club"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Business and Management Club",
+    "category": "Technical",
+    "description": "Business and management club under the Science & Technology Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Science & Technology Council counselor.",
+    "contact_id": "bmc@iiitdmj.ac.in"
+  },
+  {
+    "id": "cad",
+    "type": "club",
+    "aliases": [
+      "CAD Club",
+      "3D printing club",
+      "CAD and 3D printing",
+      "cadclub"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "CAD and 3D Printing Club",
+    "category": "Technical",
+    "description": "CAD and 3D printing club under the Science & Technology Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Science & Technology Council counselor.",
+    "contact_id": "cadclub@iiitdmj.ac.in"
+  },
+  {
+    "id": "racing",
+    "type": "club",
+    "aliases": [
+      "Racing Club",
+      "IIITDMJ Racing",
+      "racing"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "IIITDMJ Racing Club",
+    "category": "Technical",
+    "description": "Racing club under the Science & Technology Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Science & Technology Council counselor.",
+    "contact_id": "racing@iiitdmj.ac.in"
+  },
+  {
+    "id": "tpc",
+    "type": "club",
+    "aliases": [
+      "TPC",
+      "Programming Club",
+      "Prog Club",
+      "coding club",
+      "Webix",
+      "theprogclub"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "The Programming Club",
+    "category": "Technical",
+    "description": "Programming club under the Science & Technology Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Science & Technology Council counselor.",
+    "contact_id": "theprogclub@iiitdmj.ac.in"
+  },
+  {
+    "id": "ers",
+    "type": "club",
+    "aliases": [
+      "ERS",
+      "Robotics Club",
+      "Robotics Society",
+      "Electronics Club",
+      "robotics"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Electronics and Robotics Society",
+    "category": "Technical",
+    "description": "Electronics and robotics society under the Science & Technology Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Science & Technology Council counselor.",
+    "contact_id": "ers@iiitdmj.ac.in"
+  },
+  {
+    "id": "athletics",
+    "type": "club",
+    "aliases": [
+      "Athletics Club",
+      "track and field",
+      "athletics",
+      "एथलेटिक्स"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Athletics",
+    "category": "Sports",
+    "description": "Athletics club under the Sports Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Sports Council counselor.",
+    "contact_id": "athletic@iiitdmj.ac.in"
+  },
+  {
+    "id": "badminton",
+    "type": "club",
+    "aliases": [
+      "Badminton Club",
+      "badminton",
+      "बैडमिंटन"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Badminton",
+    "category": "Sports",
+    "description": "Badminton club under the Sports Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Sports Council counselor.",
+    "contact_id": "badminton@iiitdmj.ac.in"
+  },
+  {
+    "id": "basketball",
+    "type": "club",
+    "aliases": [
+      "Basketball Club",
+      "basketball",
+      "बास्केटबॉल"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Basketball",
+    "category": "Sports",
+    "description": "Basketball club under the Sports Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Sports Council counselor.",
+    "contact_id": "basketball@iiitdmj.ac.in"
+  },
+  {
+    "id": "carrom",
+    "type": "club",
+    "aliases": [
+      "Carrom Club",
+      "carrom",
+      "कैरम"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Carrom",
+    "category": "Sports",
+    "description": "Carrom club under the Sports Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Sports Council counselor.",
+    "contact_id": "carrom@iiitdmj.ac.in"
+  },
+  {
+    "id": "chess",
+    "type": "club",
+    "aliases": [
+      "Chess Club",
+      "chess",
+      "shatranj",
+      "शतरंज"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Chess",
+    "category": "Sports",
+    "description": "Chess club under the Sports Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Sports Council counselor.",
+    "contact_id": "chess@iiitdmj.ac.in"
+  },
+  {
+    "id": "cricket",
+    "type": "club",
+    "aliases": [
+      "Cricket Club",
+      "cricket",
+      "क्रिकेट"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Cricket",
+    "category": "Sports",
+    "description": "Cricket club under the Sports Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Sports Council counselor.",
+    "contact_id": "cricket@iiitdmj.ac.in"
+  },
+  {
+    "id": "football",
+    "type": "club",
+    "aliases": [
+      "Football Club",
+      "football",
+      "soccer",
+      "फुटबॉल"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Football",
+    "category": "Sports",
+    "description": "Football club under the Sports Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Sports Council counselor.",
+    "contact_id": "football@iiitdmj.ac.in"
+  },
+  {
+    "id": "gymnasium",
+    "type": "club",
+    "aliases": [
+      "Gym",
+      "Gymnasium Club",
+      "gym club",
+      "जिम"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Gymnasium",
+    "category": "Sports",
+    "description": "Gymnasium club under the Sports Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps or a club email. Ask the listed faculty contact or the Sports Council counselor.",
+    "contact_id": "nihar@iiitdmj.ac.in"
+  },
+  {
+    "id": "kabaddi",
+    "type": "club",
+    "aliases": [
+      "Kabaddi Club",
+      "kabaddi",
+      "कबड्डी"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Kabaddi",
+    "category": "Sports",
+    "description": "Kabaddi club under the Sports Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps or a club email. Ask the listed faculty contact or the Sports Council counselor.",
+    "contact_id": "avish.p@iiitdmj.ac.in"
+  },
+  {
+    "id": "lawn_tennis",
+    "type": "club",
+    "aliases": [
+      "Lawn Tennis Club",
+      "tennis",
+      "lawn tennis",
+      "लॉन टेनिस"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Lawn Tennis",
+    "category": "Sports",
+    "description": "Lawn tennis club under the Sports Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Sports Council counselor.",
+    "contact_id": "lawntennis@iiitdmj.ac.in"
+  },
+  {
+    "id": "table_tennis",
+    "type": "club",
+    "aliases": [
+      "Table Tennis Club",
+      "TT",
+      "table tennis",
+      "ping pong",
+      "टेबल टेनिस"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Table Tennis",
+    "category": "Sports",
+    "description": "Table tennis club under the Sports Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Sports Council counselor.",
+    "contact_id": "tabletennis@iiitdmj.ac.in"
+  },
+  {
+    "id": "volleyball",
+    "type": "club",
+    "aliases": [
+      "Volleyball Club",
+      "volleyball",
+      "वॉलीबॉल"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Volleyball",
+    "category": "Sports",
+    "description": "Volleyball club under the Sports Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps. Email the club using its listed contact, or ask the Sports Council counselor.",
+    "contact_id": "volleyball@iiitdmj.ac.in"
+  },
+  {
+    "id": "yoga_meditation",
+    "type": "club",
+    "aliases": [
+      "Yoga",
+      "Meditation",
+      "yoga club",
+      "yog",
+      "योग"
+    ],
+    "node_id": null,
+    "source": "https://www.iiitdmj.ac.in/students/gymkhana/clubs.php",
+    "last_verified": "2026-11-12",
+    "name": "Yoga & Meditation",
+    "category": "Sports",
+    "description": "Yoga and meditation club under the Sports Council of the Gymkhana.",
+    "how_to_join": "The official clubs page does not publish joining steps or a club email. Ask the listed faculty contact or the Sports Council counselor.",
+    "contact_id": "shivdayal@iiitdmj.ac.in"
   }
 ]

@@ -47,7 +47,8 @@ TOOLS = [
         "function": {
             "name": "simulate_all_paths",
             "description": (
-                "Run simulations across all available pathfinding "
+                "Run simulations across all a
+              vailable pathfinding "
                 "algorithms and return their respective metrics and trajectories."
             ),
             "parameters": {
@@ -295,3 +296,23 @@ def query_campus_helper(user_query: str, run_simulation_callback):
         final_response.choices[0].message.content
         or "I'm sorry, I couldn't generate a response."
     )
+
+
+def generate_structured_rag_response(
+    system_prompt: str,
+    user_message: str,
+    history: list[dict] | None = None,
+    temperature: float = 0.1,
+) -> str:
+    messages = [{"role": "system", "content": system_prompt}]
+    if history:
+        messages.extend(history)
+    messages.append({"role": "user", "content": user_message})
+
+    response = client.chat.completions.create(
+        model=GROQ_MODEL,
+        messages=messages,
+        temperature=temperature,
+        response_format={"type": "json_object"},
+    )
+    return response.choices[0].message.content or ""

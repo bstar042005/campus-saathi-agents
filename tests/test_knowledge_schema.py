@@ -89,7 +89,7 @@ def prepare_test_data(tmp_path, monkeypatch):
     write_json(knowledge_dir / "contacts.json", contacts)
     write_json(knowledge_dir / "clubs.json", clubs)
     write_json(knowledge_dir / "faqs.json", faqs)
-    write_json(knowledge_dir / "official_links.json", official_links)
+    write_json(knowledge_dir / "links.json", official_links)
 
     monkeypatch.setattr(validator, "KNOWLEDGE_DIR", knowledge_dir)
     monkeypatch.setattr(
@@ -160,7 +160,7 @@ def test_http_url_fails(tmp_path, monkeypatch, capsys):
     links[0]["url"] = "http://example.com"
 
     write_json(
-        validator.KNOWLEDGE_DIR / "official_links.json", links
+        validator.KNOWLEDGE_DIR / "links.json", links
     )
 
     assert validator.validate_knowledge() is False

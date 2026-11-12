@@ -1,0 +1,113 @@
+
+[
+  {
+    "id": "procedure_001",
+    "type": "procedure",
+    "name": "Entry Reporting & ID Verification",
+    "node_id": "gate",
+    "cluster": "neutral",
+    "mean_service_time": 2.0,
+    "num_counters": 1,
+    "source": "data/steps.json"
+  },
+  {
+    "id": "procedure_002",
+    "type": "procedure",
+    "name": "Allotment Verification",
+    "node_id": "lhtc_gate",
+    "cluster": "academic",
+    "mean_service_time": 3.0,
+    "num_counters": 3,
+    "source": "data/steps.json"
+  },
+  {
+    "id": "procedure_003",
+    "type": "procedure",
+    "name": "Document Verification",
+    "node_id": "L-103",
+    "cluster": "academic",
+    "mean_service_time": 5.0,
+    "num_counters": 3,
+    "source": "data/steps.json"
+  },
+  {
+    "id": "procedure_004",
+    "type": "procedure",
+    "name": "Fee Clearance & Accounts",
+    "node_id": "L-104",
+    "cluster": "academic",
+    "mean_service_time": 10.0,
+    "num_counters": 2,
+    "source": "data/steps.json"
+  },
+  {
+    "id": "procedure_005",
+    "type": "procedure",
+    "name": "Department Registration",
+    "node_id": "L-105",
+    "cluster": "academic",
+    "mean_service_time": 5.0,
+    "num_counters": 2,
+    "source": "data/steps.json"
+  },
+  {
+    "id": "procedure_006",
+    "type": "procedure",
+    "name": "ID Card Biometrics",
+    "node_id": "L-106",
+    "cluster": "academic",
+    "mean_service_time": 10.0,
+    "num_counters": 3,
+    "source": "data/steps.json"
+  },
+  {
+    "id": "procedure_007",
+    "type": "procedure",
+    "name": "Library Membership",
+    "node_id": "L-206",
+    "cluster": "academic",
+    "mean_service_time": 2.0,
+    "num_counters": 2,
+    "source": "data/steps.json"
+  },
+  {
+    "id": "procedure_008",
+    "type": "procedure",
+    "name": "Hostel Allotment Letter",
+    "node_id": "panini_gate",
+    "cluster": "hostel",
+    "mean_service_time": 2.0,
+    "num_counters": 2,
+    "source": "data/steps.json"
+  },
+  {
+    "id": "procedure_009",
+    "type": "procedure",
+    "name": "Room Inspection",
+    "node_id": "room",
+    "cluster": "hostel",
+    "mean_service_time": 10.0,
+    "num_counters": 10,
+    "source": "data/steps.json"
+  },
+  {
+    "id": "procedure_010",
+    "type": "procedure",
+    "name": "Warden Clearance",
+    "node_id": "office",
+    "cluster": "hostel",
+    "mean_service_time": 5.0,
+    "num_counters": 1,
+    "source": "data/steps.json"
+  },
+  {
+    "id": "procedure_011",
+    "type": "procedure",
+    "name": "Necessities Shopping",
+    "node_id": "shop",
+    "cluster": "hostel",
+    "mean_service_time": 10.0,
+    "num_counters": 2,
+    "source": "data/steps.json"
+  }
+]

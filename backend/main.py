@@ -144,16 +144,56 @@ def run_simulation_api(
         completed_steps=completed_fs
     )
 
-
-from pydantic import BaseModel
+from typing import List, Optional, Literal
+from pydantic import BaseModel, Field, field_validator
 from backend.groq_service import query_campus_helper
 
 
+class HistoryMessage(BaseModel):
+    role: Literal["user", "assistant"]
+    content: str
+
+    @field_validator("content")
+    @classmethod
+    def validate_content_not_empty(cls, v: str) -> str:
+        if not v or not v.strip():
+            raise ValueError("History message content cannot be empty.")
+        return v
+
 class ChatRequest(BaseModel):
-    query: str
+    query: str = Field(..., min_length=1)
+    history: Optional[List[HistoryMessage]] = Field(default_factory=list, max_length=6)
+
+    @field_validator("query")
+    @classmethod
+    def validate_query_not_empty(cls, v: str) -> str:
+        if not v or not v.strip():
+            raise ValueError("Query cannot be empty or whitespace only.")
+        return v
 
 
-@app.post("/api/chat")
+
+class SourceReference(BaseModel):
+    id: str
+    title: str
+    url: str
+
+
+class ExternalLink(BaseModel):
+    label: str
+    url: str
+
+
+class ChatResponse(BaseModel):
+    response: str
+    found: bool = True
+    answer_type: Literal["knowledge", "navigation", "link", "not_available"] = "knowledge"
+    sources: List[SourceReference] = Field(default_factory=list)
+    links: List[ExternalLink] = Field(default_factory=list)
+    node_id: Optional[str] = None
+    last_verified: Optional[str] = None
+
+@app.post("/api/chat", response_model=ChatResponse)
 def chat_campus_helper(request: ChatRequest):
     def simulation_callback(agent_type: str, congestion: bool = True, start_location: str = "gate", completed_steps: list = None):
         return run_simulation_api(
@@ -166,6 +206,18 @@ def chat_campus_helper(request: ChatRequest):
 
     try:
         reply = query_campus_helper(request.query, simulation_callback)
-        return {"response": reply}
+        return ChatResponse(
+            response=reply,
+            found=True,
+            answer_type="knowledge",
+            sources=[],
+            links=[],
+            node_id=None,
+            last_verified=None,
+        )
     except Exception as e:
-        return {"response": f"Error communicating with AI assistant: {str(e)}"}
+        return ChatResponse(
+            response=f"Error communicating with AI assistant: {str(e)}",
+            found=False,
+            answer_type="not_available",
+        )

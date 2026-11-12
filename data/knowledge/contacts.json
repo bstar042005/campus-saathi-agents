@@ -1,0 +1,21 @@
+
+[
+  {
+    "id": "contact_test_001",
+    "type": "contact",
+    "aliases": [
+      "Test Office",
+      "परीक्षण कार्यालय",
+      "test daftar"
+    ],
+    "node_id": "office",
+    "source": "TEST DATA",
+    "last_verified": "2026-11-12",
+    "name": "Test Contact",
+    "office": "Test Office",
+    "phone": null,
+    "email": null,
+    "location_text": "Test Location",
+    "hours": null
+  }
+]

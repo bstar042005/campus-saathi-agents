@@ -1,0 +1,22 @@
+
+[
+  {
+    "id": "faq_test_001",
+    "type": "faq",
+    "aliases": [
+      "Test Question",
+      "परीक्षण प्रश्न",
+      "test sawaal"
+    ],
+    "node_id": "gate",
+    "source": "TEST DATA",
+    "last_verified": "2026-11-12",
+    "question": "Where is the campus entry point?",
+    "answer": "This is a dummy answer for schema testing.",
+    "required_documents": [
+      "Test ID"
+    ],
+    "category": "General",
+    "related_step": "gate"
+  }
+]

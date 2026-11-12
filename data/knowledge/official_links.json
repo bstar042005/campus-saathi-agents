@@ -1,0 +1,19 @@
+
+[
+  {
+    "id": "link_test_001",
+    "type": "official_link",
+    "aliases": [
+      "Test Portal",
+      "परीक्षण पोर्टल",
+      "test website"
+    ],
+    "node_id": null,
+    "source": "TEST DATA",
+    "last_verified": "2026-11-12",
+    "key": "test_portal",
+    "label": "Test Portal",
+    "url": "https://example.com",
+    "description": "Dummy official link record for schema testing."
+  }
+]

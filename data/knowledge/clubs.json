@@ -1,0 +1,20 @@
+
+[
+  {
+    "id": "club_test_001",
+    "type": "club",
+    "aliases": [
+      "Test Club",
+      "परीक्षण क्लब",
+      "test samiti"
+    ],
+    "node_id": null,
+    "source": "TEST DATA",
+    "last_verified": "2026-11-12",
+    "name": "Test Club",
+    "category": "Technical",
+    "description": "Dummy club record for schema testing.",
+    "how_to_join": "Contact the test office for joining information.",
+    "contact_id": "contact_test_001"
+  }
+]

@@ -1,0 +1,66 @@
+[
+    {
+        "key": "main_website",
+        "label": "IIITDM Jabalpur Website",
+        "url": "https://www.iiitdmj.ac.in",
+        "description": "Official institute website. Fallback link when the requested information is not available.",
+        "source": "https://www.iiitdmj.ac.in",
+        "last_verified": "2026-11-11"
+    },
+    {
+        "key": "academic_calendar",
+        "label": "Academic Calendar 2026-27",
+        "url": "https://www.iiitdmj.ac.in/academics/download/Academic%20Calendar%20for%20Session%202026-2027%20.pdf",
+        "description": "Official academic calendar for session 2026-27: reporting, classes, exams, recesses and vacations.",
+        "source": "https://www.iiitdmj.ac.in/academics/download/Academic%20Calendar%20for%20Session%202026-2027%20.pdf",
+        "last_verified": "2026-11-11"
+    },
+    {
+        "key": "fee_portal",
+        "label": "Fee Structure and Payment",
+        "url": "https://www.iiitdmj.ac.in/academics/admission/fee_structure.php",
+        "description": "Batch-wise fee structure documents and the online fee payment link.",
+        "source": "https://www.iiitdmj.ac.in/",
+        "last_verified": "2026-11-11"
+    },
+    {
+        "key": "notices",
+        "label": "Notices Archive",
+        "url": "https://www.iiitdmj.ac.in/notices-archive.php",
+        "description": "Archive of institute notices, including admission, reporting, hostel and registration notices.",
+        "source": "https://www.iiitdmj.ac.in/",
+        "last_verified": "2026-11-11"
+    },
+    {
+        "key": "admissions",
+        "label": "Admissions",
+        "url": "https://admission.iiitdmj.ac.in",
+        "description": "Admission portal with reporting process, important forms and programme-wise admission pages.",
+        "source": "https://www.iiitdmj.ac.in/",
+        "last_verified": "2026-11-11"
+    },
+    {
+        "key": "student_affairs",
+        "label": "Office of Dean (Students)",
+        "url": "https://www.iiitdmj.ac.in/students/dean_office.php",
+        "description": "Student affairs office: staff, contacts, anti-ragging, counselling and important forms.",
+        "source": "https://www.iiitdmj.ac.in/",
+        "last_verified": "2026-11-11"
+    },
+    {
+        "key": "library",
+        "label": "Central Library",
+        "url": "http://web.iiitdmj.ac.in/library.html",
+        "description": "Central Library page of the institute.",
+        "source": "https://www.iiitdmj.ac.in/administration/other-admin.php",
+        "last_verified": "2026-11-11"
+    },
+    {
+        "key": "hostel",
+        "label": "Hostels",
+        "url": "https://www.iiitdmj.ac.in/students/hostels.php",
+        "description": "Hostel halls, allotment lists, wardens, rules and notifications.",
+        "source": "https://www.iiitdmj.ac.in/",
+        "last_verified": "2026-11-11"
+    }
+]

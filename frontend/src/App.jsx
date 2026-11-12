@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CampusMap from './components/CampusMap';
 import MetricsPanel from './components/MetricsPanel';
 import ChatModal from './components/ChatModal';
+import { API_URL } from "./config";
 
 export default function App() {
   const [selectedAlgo, setSelectedAlgo] = useState('a_star');
@@ -26,7 +27,7 @@ export default function App() {
   const runSimulation = async (algoId, congestionState, iterations = qIterations) => {
     setLoading(true);
     try {
-      const url = `http://127.0.0.1:8000/api/simulate/${algoId}?congestion=${congestionState}&iterations=${iterations}`;
+      const url = `${API_URL}/api/simulate/${algoId}?congestion=${congestionState}&iterations=${iterations}`;
       const response = await fetch(url);
       const data = await response.json();
       setSimulationData(data);

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { API_URL } from "../config";
 
 export default function ChatModal({ isOpen, onClose }) {
   const [messages, setMessages] = useState([
@@ -34,7 +35,7 @@ export default function ChatModal({ isOpen, onClose }) {
     setLoading(true);
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/chat', {
+      const res = await fetch(`${API_URL}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query })

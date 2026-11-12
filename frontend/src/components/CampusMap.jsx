@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { API_URL } from "../config";
 
 export default function CampusMap({
   simulationResult,
@@ -11,7 +12,7 @@ export default function CampusMap({
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/map')
+    fetch(`${API_URL}/api/map`)
       .then(res => res.json())
       .then(data => setMapData(data))
       .catch(err => console.error('Failed to load map data:', err));

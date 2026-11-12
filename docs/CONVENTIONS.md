@@ -1,3 +1,4 @@
+
 Node IDs always refer to ids in data/campus_map.json.
 Every knowledge record has: id, type, aliases (list), node_id (nullable), source (URL or document name), last_verified (YYYY-MM-DD).
 Chat response contract (defined in Issue 4.1):
